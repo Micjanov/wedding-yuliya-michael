@@ -1,202 +1,381 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Wedding links — RSVP, Guest Info, Song Requests, and more." />
-    <title>[Names] — Wedding Links</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Wedding celebration links — RSVP, guest information, song requests, and gift registry for Alex & Mia's wedding.">
+    <meta name="theme-color" content="#6c8f4b">
+    <meta property="og:title" content="Alex & Mia — Wedding Links">
+    <meta property="og:description" content="Join us for our special day! RSVP and share your song requests.">
+    <meta property="og:type" content="website">
+    <title>Alex &amp; Mia — Wedding Celebration</title>
     <!--
-      Hello! This is a single-file GitHub Pages-ready page for a wedding "linktree".
+      Elegant single-file wedding links page for GitHub Pages.
 
-      How to use:
-        1. Replace the placeholder links below (they contain the text REPLACE_ME) with your Google Forms share URLs.
-           Search for REPLACE_ME in the file to find the placeholders.
-        2. Save this file as index.html and push it to a GitHub repo named `yourusername.github.io` for user pages
-           OR push to any repo and enable GitHub Pages from the repo settings (choose main branch / docs folder or gh-pages).
-        3. Your page will be available at https://yourusername.github.io (or the repo pages URL).
+      CUSTOMIZATION GUIDE:
+        1. Search for REPLACE_ME and update all Google Forms URLs
+        2. Update names in <h1> (line ~150) and <title> above
+        3. Update wedding date in <time> element (line ~151)
+        4. Adjust colors in CSS :root variables (lines ~40-50)
+        5. Optional: Remove Google Fonts and use system fonts only
 
-      Small notes:
-        • All styling is embedded; no external images are required.
-        • Google Fonts are used; if you prefer none, remove the <link> to Google Fonts.
-        • Customize colors by editing the CSS variables in :root.
+      DEPLOYMENT:
+        • Push to GitHub repo and enable Pages in Settings → Pages
+        • Choose main branch as source
+        • Site will be live at https://username.github.io/repo-name
     -->
 
+    <!-- Optimized font loading with fallbacks -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
     <style>
-        :root{
-            --bg:#fffaf6; /* warm cream */
-            --accent:#6c8f4b; /* sage green */
-            --muted:#7b6f6a; /* warm gray */
-            --btn-bg:#ffffff;
-            --btn-border: rgba(108,143,75,0.12);
-            --btn-shadow: 0 6px 20px rgba(37, 44, 38, 0.08);
-            --accent-2:#d19fb8; /* wildflower pink */
-            --accent-3:#f7d48b; /* golden */
-            --max-width:720px;
+        /* ========================================
+           CSS Custom Properties (Design Tokens)
+           ======================================== */
+        :root {
+            /* Color palette */
+            --color-bg-primary: #fffaf6;
+            --color-bg-secondary: #fffefb;
+            --color-accent: #6c8f4b;
+            --color-accent-hover: #5a7840;
+            --color-text-primary: #2a2a2a;
+            --color-text-muted: #7b6f6a;
+            --color-surface: #ffffff;
+            --color-wildflower-pink: #d19fb8;
+            --color-wildflower-gold: #f7d48b;
+            
+            /* Shadows and borders */
+            --shadow-sm: 0 2px 8px rgba(24, 28, 24, 0.06);
+            --shadow-md: 0 10px 30px rgba(24, 28, 24, 0.08);
+            --shadow-lg: 0 18px 40px rgba(27, 30, 26, 0.12);
+            --shadow-inset: inset 0 -6px 8px rgba(0, 0, 0, 0.06);
+            --border-subtle: rgba(108, 143, 75, 0.12);
+            --border-card: rgba(120, 110, 100, 0.06);
+            
+            /* Spacing and sizing */
+            --max-width: 720px;
+            --radius-sm: 10px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --gap-sm: 14px;
+            --gap-md: 20px;
+            --gap-lg: 28px;
+            
+            /* Typography */
+            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-weight-normal: 400;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
         }
 
-        *{box-sizing:border-box}
-        html,body{height:100%}
-        body{
-            margin:0;
-            font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-            background:linear-gradient(180deg,var(--bg) 0%, #fffefb 100%);
-            color:#2a2a2a;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:40px 20px;
+        /* ========================================
+           Base Styles & Reset
+           ======================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
         }
 
-        .card{
-            width:100%;
-            max-width:var(--max-width);
-            background: rgba(255,255,255,0.85);
-            border-radius:18px;
-            box-shadow: 0 10px 30px rgba(24,28,24,0.08);
-            overflow:hidden;
-            position:relative;
-            border: 1px solid rgba(120,110,100,0.06);
+        html {
+            height: 100%;
+            scroll-behavior: smooth;
         }
 
-        /* decorative wildflower header */
-        .hero{
-            padding:40px 28px 24px 28px;
-            text-align:center;
-            background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0));
+        body {
+            min-height: 100%;
+            margin: 0;
+            padding: 40px 20px;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--color-text-primary);
+            background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .flower-strip{
-            width:100%;
-            height:68px;
-            background: radial-gradient(circle at 10% 20%, rgba(209,159,184,0.12) 0 6%, transparent 6%),
-            radial-gradient(circle at 85% 40%, rgba(247,212,139,0.10) 0 6%, transparent 6%),
-            radial-gradient(circle at 50% 75%, rgba(108,143,75,0.06) 0 6%, transparent 6%);
-            display:block;
+        /* ========================================
+           Card Container
+           ======================================== */
+        .card {
+            width: 100%;
+            max-width: var(--max-width);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-card);
+            overflow: hidden;
+            position: relative;
         }
 
-        h1{
-            margin:12px 0 2px 0;
-            font-family: 'Playfair Display', serif;
-            font-weight:600;
-            letter-spacing:0.4px;
-            font-size:30px;
-            color:var(--accent);
+        /* ========================================
+           Hero Section
+           ======================================== */
+        .hero {
+            padding: 40px var(--gap-lg) 24px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
         }
 
-        .date{font-size:14px;color:var(--muted);margin-bottom:8px}
-        .subtitle{font-size:14px;color:var(--muted);margin-top:6px}
-
-        .links{
-            padding:28px 20px 36px 20px;
-            display:flex;
-            gap:14px;
-            flex-direction:column;
-            align-items:stretch;
+        .flower-strip {
+            width: 100%;
+            height: 68px;
+            margin-bottom: 16px;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(209, 159, 184, 0.12) 0 6%, transparent 6%),
+                radial-gradient(circle at 85% 40%, rgba(247, 212, 139, 0.10) 0 6%, transparent 6%),
+                radial-gradient(circle at 50% 75%, rgba(108, 143, 75, 0.06) 0 6%, transparent 6%);
+            display: block;
+            pointer-events: none;
         }
 
-        .link-btn{
-            display:flex;
-            gap:14px;
-            align-items:center;
-            padding:14px 16px;
-            border-radius:12px;
-            text-decoration:none;
-            background:var(--btn-bg);
-            border:1px solid var(--btn-border);
-            box-shadow:var(--btn-shadow);
-            transition:transform .18s ease, box-shadow .18s ease;
-            color: #2a2a2a;
-        }
-        .link-btn:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(27,30,26,0.12)}
-
-        .flower-ico{
-            width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:10px;background:linear-gradient(135deg,var(--accent-2),var(--accent-3));color:white;box-shadow:inset 0 -6px 8px rgba(0,0,0,0.06);
+        h1 {
+            margin: 12px 0 8px;
+            font-family: var(--font-serif);
+            font-weight: var(--font-weight-semibold);
+            font-size: clamp(24px, 5vw, 32px);
+            letter-spacing: 0.5px;
+            color: var(--color-accent);
+            line-height: 1.2;
         }
 
-        .link-label{font-weight:600}
-        .link-desc{font-size:13px;color:var(--muted);margin-top:3px}
+        .date {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+        }
 
-        .small{font-size:12px;color:var(--muted);text-align:center;padding:18px}
+        .subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
 
-        /* responsive */
-        @media (max-width:520px){
-            h1{font-size:24px}
-            .hero{padding:28px 18px}
-            .links{padding:20px}
+        /* ========================================
+           Links Section
+           ======================================== */
+        .links {
+            padding: var(--gap-lg) var(--gap-md) 36px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-sm);
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: 14px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 180ms ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover,
+        .link-btn:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent);
+        }
+
+        .link-btn:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .link-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .link-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .flower-ico {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(135deg, var(--color-wildflower-pink), var(--color-wildflower-gold));
+            box-shadow: var(--shadow-inset);
+        }
+
+        .link-label {
+            font-weight: var(--font-weight-semibold);
+            font-size: 16px;
+            margin-bottom: 2px;
+            color: var(--color-text-primary);
+        }
+
+        .link-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        /* ========================================
+           Footer
+           ======================================== */
+        .footer {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-align: center;
+            padding: 18px var(--gap-md);
+            border-top: 1px solid rgba(120, 110, 100, 0.08);
+        }
+
+        /* ========================================
+           Responsive Design
+           ======================================== */
+        @media (max-width: 520px) {
+            body {
+                padding: 20px 16px;
+            }
+
+            .hero {
+                padding: 28px 18px 20px;
+            }
+
+            .links {
+                padding: var(--gap-md) 16px 28px;
+            }
+
+            .link-btn {
+                padding: 12px 14px;
+            }
+
+            .flower-ico {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* ========================================
+           Print Styles
+           ======================================== */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            .link-btn {
+                page-break-inside: avoid;
+            }
+
+            .link-btn::after {
+                content: " (" attr(href) ")";
+                font-size: 10px;
+                color: #666;
+            }
         }
     </style>
 </head>
 <body>
-<main class="card" role="main">
-    <div class="hero">
-        <span class="flower-strip" aria-hidden="true"></span>
-        <h1>Alex &amp; Mia</h1>
-        <div class="date">June 14, 2026</div>
-        <div class="subtitle">Our wedding links — RSVP, songs, and guest notes</div>
-    </div>
+    <main class="card">
+        <header class="hero">
+            <div class="flower-strip" aria-hidden="true"></div>
+            <h1>Alex <span aria-hidden="true">&amp;</span><span class="sr-only">and</span> Mia</h1>
+            <time class="date" datetime="2026-06-14">June 14, 2026</time>
+            <p class="subtitle">Join us in celebrating our special day</p>
+        </header>
 
-    <section class="links" aria-label="Wedding links">
+        <nav class="links" aria-label="Wedding information links">
+            <!-- REPLACE_ME: Update all href values below with your Google Forms URLs -->
+            
+            <a class="link-btn" href="https://forms.gle/REPLACE_ME_RSVP" target="_blank" rel="noopener noreferrer">
+                <div class="flower-ico" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 2c1.1 0 2 .9 2 2 0 1.4-.6 3-1.8 4.2C11.5 9.4 10 10 8.5 10 7 10 6 9 6 8s.5-2 1.3-3C8.9 3.5 10.4 2 12 2z" fill="currentColor" opacity="0.95"/>
+                        <circle cx="12" cy="15" r="5" fill="currentColor" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-label">RSVP</div>
+                    <div class="link-desc">Let us know if you can join us</div>
+                </div>
+            </a>
 
-        <!-- Replace the href values that contain REPLACE_ME with your Google Form URLs -->
-        <a class="link-btn" href="https://forms.gle/REPLACE_ME_RSVP" target="_blank" rel="noopener noreferrer" aria-label="RSVP form">
-            <div class="flower-ico" aria-hidden="true">
-                <!-- small flower svg -->
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2c1.1 0 2 .9 2 2 0 1.4-.6 3-1.8 4.2C11.5 9.4 10 10 8.5 10 7 10 6 9 6 8s.5-2 1.3-3C8.9 3.5 10.4 2 12 2z" fill="white" opacity="0.95"/>
-                    <circle cx="12" cy="15" r="5" fill="white" opacity="0.9"/>
-                </svg>
-            </div>
-            <div>
-                <div class="link-label">RSVP</div>
-                <div class="link-desc">Please let us know if you'll join us</div>
-            </div>
-        </a>
+            <a class="link-btn" href="https://forms.gle/REPLACE_ME_SONG" target="_blank" rel="noopener noreferrer">
+                <div class="flower-ico" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M5 3v12a4 4 0 1 0 2 3V8h7V3H5z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-label">Song Requests</div>
+                    <div class="link-desc">Share your favorite songs for the reception</div>
+                </div>
+            </a>
 
-        <a class="link-btn" href="https://forms.gle/REPLACE_ME_SONG" target="_blank" rel="noopener noreferrer" aria-label="Song request form">
-            <div class="flower-ico" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 3v12a4 4 0 1 0 2 3V8h7V3H5z" fill="white"/>
-                </svg>
-            </div>
-            <div>
-                <div class="link-label">Song Requests</div>
-                <div class="link-desc">Tell us a song to play at the reception</div>
-            </div>
-        </a>
+            <a class="link-btn" href="https://forms.gle/REPLACE_ME_INFO" target="_blank" rel="noopener noreferrer">
+                <div class="flower-ico" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" fill="currentColor"/>
+                        <path d="M2 22c1-5 6-8 10-8s9 3 10 8H2z" fill="currentColor" opacity="0.95"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-label">Guest Information</div>
+                    <div class="link-desc">Dietary needs, travel details, and notes</div>
+                </div>
+            </a>
 
-        <a class="link-btn" href="https://forms.gle/REPLACE_ME_INFO" target="_blank" rel="noopener noreferrer" aria-label="Guest information form">
-            <div class="flower-ico" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" fill="white"/>
-                    <path d="M2 22c1-5 6-8 10-8s9 3 10 8H2z" fill="white" opacity="0.95"/>
-                </svg>
-            </div>
-            <div>
-                <div class="link-label">Guest Info</div>
-                <div class="link-desc">Dietary needs, arrival details, and notes</div>
-            </div>
-        </a>
+            <a class="link-btn" href="https://forms.gle/REPLACE_ME_GIFTS" target="_blank" rel="noopener noreferrer">
+                <div class="flower-ico" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 12v8H4v-8h16zM8 6l2-3h4l2 3" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-label">Gift Registry</div>
+                    <div class="link-desc">View our registry or contribute</div>
+                </div>
+            </a>
+        </nav>
 
-        <a class="link-btn" href="https://forms.gle/REPLACE_ME_GIFTS" target="_blank" rel="noopener noreferrer" aria-label="Gift registry or other form">
-            <div class="flower-ico" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 12v8H4v-8h16zM8 6l2-3h4l2 3" fill="white"/>
-                </svg>
-            </div>
-            <div>
-                <div class="link-label">Gifts &amp; Registry</div>
-                <div class="link-desc">Registry links or contribution form</div>
-            </div>
-        </a>
-
-    </section>
-
-    <div class="small">Made with love • Replace the REPLACE_ME links with your Google Forms</div>
-</main>
+        <footer class="footer">
+            <small>Made with love for our celebration</small>
+        </footer>
+    </main>
 </body>
 </html>
