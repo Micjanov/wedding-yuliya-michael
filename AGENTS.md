@@ -1,7 +1,7 @@
 # Agent Guidelines for Wedding Links Page
 
 ## Project Overview
-High-performance static wedding links page. Single HTML file, no build system or dependencies. Optimized for accessibility, SEO, and performance.
+High-performance static wedding links page for Yuliya & Michael. Single HTML file, no build system or dependencies. Wildflower theme with palette derived from kleurenpalet.jpeg (lavender, marigold, cream, olive, forest green). Optimized for accessibility, SEO, and performance.
 
 ## Commands
 - **Local preview**: Open `index.html` directly in browser (no server required)
@@ -20,8 +20,8 @@ High-performance static wedding links page. Single HTML file, no build system or
 
 ## Customization Guide
 - **URLs**: Search `REPLACE_ME` (4 occurrences) and update with Google Forms URLs
-- **Content**: Update names in `<h1>` (line ~150), date in `<time datetime>` (line ~151)
-- **Colors**: Modify `--color-*` variables in `:root` (lines ~40-50)
+- **Content**: Update names in `<h1>` (line ~280), date in `<time datetime>` (line ~281)
+- **Colors**: Modify `--color-*` variables in `:root` (lines ~40-60)
 - **Fonts**: Remove Google Fonts links and update `--font-*` variables for system fonts only
 
 ## Key Improvements Over Original

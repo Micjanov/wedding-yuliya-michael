@@ -3,29 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Wedding celebration links — RSVP, guest information, song requests, and gift registry for Alex & Mia's wedding.">
-    <meta name="theme-color" content="#6c8f4b">
-    <meta property="og:title" content="Alex & Mia — Wedding Links">
-    <meta property="og:description" content="Join us for our special day! RSVP and share your song requests.">
+    <meta name="description" content="Wedding celebration — RSVP for Yuliya & Michael's wedding. More info coming soon.">
+    <meta name="theme-color" content="#8FA34E">
+    <meta property="og:title" content="Yuliya & Michael — Wedding Links">
+    <meta property="og:description" content="Join us for our special day! RSVP now — more info coming soon.">
     <meta property="og:type" content="website">
-    <title>Alex &amp; Mia — Wedding Celebration</title>
-    <!--
-      Elegant single-file wedding links page for GitHub Pages.
+    <title>Yuliya &amp; Michael — Wedding Celebration</title>
+    <!-- Hey there, curious one. Yes, this is just a single HTML file. No, there is no hidden treasure map. Or is there? -->
 
-      CUSTOMIZATION GUIDE:
-        1. Search for REPLACE_ME and update all Google Forms URLs
-        2. Update names in <h1> (line ~150) and <title> above
-        3. Update wedding date in <time> element (line ~151)
-        4. Adjust colors in CSS :root variables (lines ~40-50)
-        5. Optional: Remove Google Fonts and use system fonts only
-
-      DEPLOYMENT:
-        • Push to GitHub repo and enable Pages in Settings → Pages
-        • Choose main branch as source
-        • Site will be live at https://username.github.io/repo-name
-    -->
-
-    <!-- Optimized font loading with fallbacks -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -34,36 +19,46 @@
     <style>
         /* ========================================
            CSS Custom Properties (Design Tokens)
+           Palette from kleurenpalet.jpeg:
+             Lavender #9E90AB | Marigold #E5983A
+             Cream #E0D9C6   | Olive #8FA34E
+             Forest #4D5B38
            ======================================== */
         :root {
-            /* Color palette */
-            --color-bg-primary: #fffaf6;
-            --color-bg-secondary: #fffefb;
-            --color-accent: #6c8f4b;
-            --color-accent-hover: #5a7840;
-            --color-text-primary: #2a2a2a;
-            --color-text-muted: #7b6f6a;
-            --color-surface: #ffffff;
-            --color-wildflower-pink: #d19fb8;
-            --color-wildflower-gold: #f7d48b;
-            
+            /* Wildflower color palette */
+            --color-bg-primary: #FBF8F0;
+            --color-bg-secondary: #F6F2E8;
+            --color-accent: #8FA34E;
+            --color-accent-hover: #4D5B38;
+            --color-text-primary: #3A3A2E;
+            --color-text-muted: #7B7562;
+            --color-surface: #FFFDF8;
+            --color-cream: #E0D9C6;
+
+            /* Wildflower accent colors */
+            --color-wildflower-lavender: #9E90AB;
+            --color-wildflower-orange: #E5983A;
+            --color-wildflower-cream: #E0D9C6;
+            --color-wildflower-olive: #8FA34E;
+            --color-wildflower-forest: #4D5B38;
+
             /* Shadows and borders */
-            --shadow-sm: 0 2px 8px rgba(24, 28, 24, 0.06);
-            --shadow-md: 0 10px 30px rgba(24, 28, 24, 0.08);
-            --shadow-lg: 0 18px 40px rgba(27, 30, 26, 0.12);
+            --shadow-sm: 0 2px 8px rgba(77, 91, 56, 0.07);
+            --shadow-md: 0 10px 30px rgba(77, 91, 56, 0.09);
+            --shadow-lg: 0 18px 40px rgba(77, 91, 56, 0.13);
             --shadow-inset: inset 0 -6px 8px rgba(0, 0, 0, 0.06);
-            --border-subtle: rgba(108, 143, 75, 0.12);
-            --border-card: rgba(120, 110, 100, 0.06);
-            
+            --border-subtle: rgba(143, 163, 78, 0.15);
+            --border-card: rgba(158, 144, 171, 0.12);
+
             /* Spacing and sizing */
             --max-width: 720px;
             --radius-sm: 10px;
             --radius-md: 12px;
-            --radius-lg: 18px;
+            --radius-lg: 20px;
             --gap-sm: 14px;
             --gap-md: 20px;
             --gap-lg: 28px;
-            
+
             /* Typography */
             --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
             --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -92,7 +87,13 @@
             font-size: 16px;
             line-height: 1.5;
             color: var(--color-text-primary);
-            background: linear-gradient(180deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+            background-color: var(--color-bg-primary);
+            background-image:
+                radial-gradient(ellipse at 15% 10%, rgba(158, 144, 171, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 20%, rgba(229, 152, 58, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 90%, rgba(143, 163, 78, 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 10% 80%, rgba(229, 152, 58, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 70%, rgba(158, 144, 171, 0.08) 0%, transparent 40%);
             background-attachment: fixed;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -107,8 +108,8 @@
         .card {
             width: 100%;
             max-width: var(--max-width);
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 253, 248, 0.88);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-card);
@@ -117,33 +118,50 @@
         }
 
         /* ========================================
+           Wildflower Meadow Decoration (Bottom)
+           ======================================== */
+        .meadow-bottom {
+            width: 100%;
+            height: 140px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg,
+                transparent 0%,
+                rgba(224, 217, 198, 0.10) 40%,
+                rgba(143, 163, 78, 0.08) 100%);
+        }
+
+        .meadow-bottom svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ========================================
            Hero Section
            ======================================== */
         .hero {
             padding: 40px var(--gap-lg) 24px;
             text-align: center;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
+            position: relative;
         }
 
-        .flower-strip {
-            width: 100%;
-            height: 68px;
-            margin-bottom: 16px;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(209, 159, 184, 0.12) 0 6%, transparent 6%),
-                radial-gradient(circle at 85% 40%, rgba(247, 212, 139, 0.10) 0 6%, transparent 6%),
-                radial-gradient(circle at 50% 75%, rgba(108, 143, 75, 0.06) 0 6%, transparent 6%);
-            display: block;
-            pointer-events: none;
+        .ampersand {
+            display: inline-block;
+            color: var(--color-wildflower-orange);
+            font-style: italic;
+            padding: 0 4px;
         }
 
         h1 {
-            margin: 12px 0 8px;
+            margin: 8px 0 8px;
             font-family: var(--font-serif);
-            font-weight: var(--font-weight-semibold);
-            font-size: clamp(24px, 5vw, 32px);
+            font-weight: var(--font-weight-bold);
+            font-size: clamp(26px, 5.5vw, 36px);
             letter-spacing: 0.5px;
-            color: var(--color-accent);
+            color: var(--color-wildflower-forest);
             line-height: 1.2;
         }
 
@@ -151,22 +169,31 @@
             display: inline-block;
             font-size: 15px;
             font-weight: var(--font-weight-semibold);
-            color: var(--color-text-muted);
+            color: var(--color-wildflower-olive);
             margin-bottom: 6px;
+            letter-spacing: 0.3px;
         }
 
         .subtitle {
             font-size: 14px;
             color: var(--color-text-muted);
-            margin-top: 4px;
+            margin: 6px 0 0;
             line-height: 1.4;
+        }
+
+        /* Decorative wildflower sprig below subtitle */
+        .sprig {
+            display: block;
+            margin: 14px auto 0;
+            width: 80px;
+            height: 24px;
         }
 
         /* ========================================
            Links Section
            ======================================== */
         .links {
-            padding: var(--gap-lg) var(--gap-md) 36px;
+            padding: var(--gap-md) var(--gap-md) 36px;
             display: flex;
             flex-direction: column;
             gap: var(--gap-sm);
@@ -211,6 +238,7 @@
             min-width: 0;
         }
 
+        /* Each icon gets a unique wildflower color combination */
         .flower-ico {
             width: 44px;
             height: 44px;
@@ -218,8 +246,12 @@
             display: grid;
             place-items: center;
             border-radius: var(--radius-sm);
-            background: linear-gradient(135deg, var(--color-wildflower-pink), var(--color-wildflower-gold));
             box-shadow: var(--shadow-inset);
+        }
+
+        .flower-ico--rsvp {
+            background: linear-gradient(135deg, var(--color-wildflower-olive), var(--color-wildflower-forest));
+            color: #fff;
         }
 
         .link-label {
@@ -236,6 +268,17 @@
         }
 
         /* ========================================
+           Coming Soon Notice
+           ======================================== */
+        .coming-soon {
+            text-align: center;
+            padding: 0 var(--gap-md) 8px;
+            color: var(--color-text-muted);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* ========================================
            Footer
            ======================================== */
         .footer {
@@ -243,7 +286,7 @@
             color: var(--color-text-muted);
             text-align: center;
             padding: 18px var(--gap-md);
-            border-top: 1px solid rgba(120, 110, 100, 0.08);
+            position: relative;
         }
 
         /* ========================================
@@ -252,6 +295,10 @@
         @media (max-width: 520px) {
             body {
                 padding: 20px 16px;
+            }
+
+            .meadow-bottom {
+                height: 110px;
             }
 
             .hero {
@@ -278,7 +325,7 @@
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
-            
+
             html {
                 scroll-behavior: auto;
             }
@@ -298,6 +345,10 @@
                 border: 1px solid #ccc;
             }
 
+            .meadow-bottom {
+                display: none;
+            }
+
             .link-btn {
                 page-break-inside: avoid;
             }
@@ -313,17 +364,23 @@
 <body>
     <main class="card">
         <header class="hero">
-            <div class="flower-strip" aria-hidden="true"></div>
-            <h1>Alex <span aria-hidden="true">&amp;</span><span class="sr-only">and</span> Mia</h1>
-            <time class="date" datetime="2026-06-14">June 14, 2026</time>
+            <h1>Yuliya <span class="ampersand">&amp;</span> Michael</h1>
+            <time class="date" datetime="2026-08-01">August 1, 2026</time>
             <p class="subtitle">Join us in celebrating our special day</p>
+
+            <svg class="sprig" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10,18 Q20,14 40,12 Q60,14 70,18" fill="none" stroke="#8FA34E" stroke-width="1" opacity="0.5"/>
+                <circle cx="25" cy="14" r="2.5" fill="#9E90AB" opacity="0.6"/>
+                <circle cx="40" cy="11" r="3" fill="#E5983A" opacity="0.5"/>
+                <circle cx="55" cy="14" r="2.5" fill="#9E90AB" opacity="0.6"/>
+                <circle cx="15" cy="16.5" r="1.5" fill="#8FA34E" opacity="0.5"/>
+                <circle cx="65" cy="16.5" r="1.5" fill="#8FA34E" opacity="0.5"/>
+            </svg>
         </header>
 
         <nav class="links" aria-label="Wedding information links">
-            <!-- REPLACE_ME: Update all href values below with your Google Forms URLs -->
-            
             <a class="link-btn" href="https://forms.gle/REPLACE_ME_RSVP" target="_blank" rel="noopener noreferrer">
-                <div class="flower-ico" aria-hidden="true">
+                <div class="flower-ico flower-ico--rsvp" aria-hidden="true">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M12 2c1.1 0 2 .9 2 2 0 1.4-.6 3-1.8 4.2C11.5 9.4 10 10 8.5 10 7 10 6 9 6 8s.5-2 1.3-3C8.9 3.5 10.4 2 12 2z" fill="currentColor" opacity="0.95"/>
                         <circle cx="12" cy="15" r="5" fill="currentColor" opacity="0.9"/>
@@ -334,48 +391,198 @@
                     <div class="link-desc">Let us know if you can join us</div>
                 </div>
             </a>
-
-            <a class="link-btn" href="https://forms.gle/REPLACE_ME_SONG" target="_blank" rel="noopener noreferrer">
-                <div class="flower-ico" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M5 3v12a4 4 0 1 0 2 3V8h7V3H5z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="link-content">
-                    <div class="link-label">Song Requests</div>
-                    <div class="link-desc">Share your favorite songs for the reception</div>
-                </div>
-            </a>
-
-            <a class="link-btn" href="https://forms.gle/REPLACE_ME_INFO" target="_blank" rel="noopener noreferrer">
-                <div class="flower-ico" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" fill="currentColor"/>
-                        <path d="M2 22c1-5 6-8 10-8s9 3 10 8H2z" fill="currentColor" opacity="0.95"/>
-                    </svg>
-                </div>
-                <div class="link-content">
-                    <div class="link-label">Guest Information</div>
-                    <div class="link-desc">Dietary needs, travel details, and notes</div>
-                </div>
-            </a>
-
-            <a class="link-btn" href="https://forms.gle/REPLACE_ME_GIFTS" target="_blank" rel="noopener noreferrer">
-                <div class="flower-ico" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M20 12v8H4v-8h16zM8 6l2-3h4l2 3" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="link-content">
-                    <div class="link-label">Gift Registry</div>
-                    <div class="link-desc">View our registry or contribute</div>
-                </div>
-            </a>
         </nav>
+
+        <p class="coming-soon">More info coming soon</p>
 
         <footer class="footer">
             <small>Made with love for our celebration</small>
         </footer>
+
+        <div class="meadow-bottom" aria-hidden="true">
+            <svg viewBox="0 0 720 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+
+                <!-- Swaying grass — varied curves and heights -->
+                <g opacity="0.45">
+                    <path d="M5,140 Q0,80 12,50 Q8,85 15,140" fill="#8FA34E"/>
+                    <path d="M22,140 Q30,70 24,28 Q20,75 30,140" fill="#6B8A3A"/>
+                    <path d="M50,140 Q44,90 55,55 Q48,88 60,140" fill="#4D5B38"/>
+                    <path d="M75,140 Q82,65 70,30 Q78,70 85,140" fill="#8FA34E"/>
+                    <path d="M110,140 Q105,80 115,48 Q108,82 120,140" fill="#6B8A3A"/>
+                    <path d="M155,140 Q162,55 148,20 Q158,60 165,140" fill="#4D5B38"/>
+                    <path d="M190,140 Q184,85 195,50 Q188,82 200,140" fill="#8FA34E"/>
+                    <path d="M235,140 Q240,60 228,35 Q237,65 245,140" fill="#6B8A3A"/>
+                    <path d="M270,140 Q264,75 275,42 Q268,78 280,140" fill="#8FA34E"/>
+                    <path d="M305,140 Q312,50 298,18 Q308,55 315,140" fill="#4D5B38"/>
+                    <path d="M345,140 Q338,80 350,45 Q342,78 355,140" fill="#8FA34E"/>
+                    <path d="M380,140 Q387,58 374,26 Q384,62 390,140" fill="#6B8A3A"/>
+                    <path d="M415,140 Q408,75 420,40 Q412,78 425,140" fill="#4D5B38"/>
+                    <path d="M455,140 Q462,52 448,22 Q458,58 465,140" fill="#8FA34E"/>
+                    <path d="M495,140 Q488,82 500,48 Q492,80 505,140" fill="#6B8A3A"/>
+                    <path d="M530,140 Q538,55 524,28 Q534,60 540,140" fill="#4D5B38"/>
+                    <path d="M565,140 Q558,78 570,42 Q562,76 575,140" fill="#8FA34E"/>
+                    <path d="M600,140 Q608,50 594,20 Q604,56 610,140" fill="#6B8A3A"/>
+                    <path d="M640,140 Q633,72 645,38 Q637,75 650,140" fill="#8FA34E"/>
+                    <path d="M675,140 Q682,48 668,16 Q678,54 685,140" fill="#4D5B38"/>
+                    <path d="M705,140 Q698,80 710,44 Q702,78 715,140" fill="#6B8A3A"/>
+                </g>
+
+                <!-- Curving stems with leaves -->
+                <g fill="none" stroke-linecap="round">
+                    <!-- Tall swaying stem left -->
+                    <path d="M90,140 Q85,100 95,70 Q100,50 92,22" stroke="#6B8A3A" stroke-width="1.8"/>
+                    <path d="M95,70 Q102,65 108,68" fill="#8FA34E" stroke="none"/>
+                    <path d="M93,52 Q85,48 82,52" fill="#8FA34E" stroke="none"/>
+
+                    <!-- Leaning stem -->
+                    <path d="M250,140 Q245,105 260,75 Q270,55 258,20" stroke="#4D5B38" stroke-width="1.6"/>
+                    <path d="M260,75 Q268,70 273,74" fill="#8FA34E" stroke="none"/>
+                    <path d="M264,50 Q256,45 253,50" fill="#6B8A3A" stroke="none"/>
+
+                    <!-- Graceful curve center -->
+                    <path d="M370,140 Q360,95 375,65 Q385,40 372,10" stroke="#6B8A3A" stroke-width="1.8"/>
+                    <path d="M375,65 Q383,60 388,64" fill="#8FA34E" stroke="none"/>
+                    <path d="M378,42 Q370,37 367,42" fill="#8FA34E" stroke="none"/>
+                    <path d="M374,85 Q366,82 364,86" fill="#6B8A3A" stroke="none"/>
+
+                    <!-- Wispy stem right -->
+                    <path d="M540,140 Q548,100 535,68 Q528,48 538,15" stroke="#4D5B38" stroke-width="1.6"/>
+                    <path d="M535,68 Q527,64 524,68" fill="#8FA34E" stroke="none"/>
+                    <path d="M536,45 Q544,40 547,44" fill="#6B8A3A" stroke="none"/>
+
+                    <!-- Far right curve -->
+                    <path d="M660,140 Q655,98 665,65 Q672,42 662,12" stroke="#6B8A3A" stroke-width="1.8"/>
+                    <path d="M665,65 Q672,60 676,64" fill="#8FA34E" stroke="none"/>
+                    <path d="M667,42 Q659,38 656,42" fill="#8FA34E" stroke="none"/>
+                </g>
+
+                <!-- Daisies with proper petals -->
+                <g>
+                    <!-- Big daisy -->
+                    <ellipse cx="88" cy="20" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(-30 88 20)"/>
+                    <ellipse cx="96" cy="20" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(30 96 20)"/>
+                    <ellipse cx="92" cy="16" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(90 92 16)"/>
+                    <ellipse cx="88" cy="25" rx="3.5" ry="1.8" fill="#fff" opacity="0.85" transform="rotate(-60 88 25)"/>
+                    <ellipse cx="96" cy="25" rx="3.5" ry="1.8" fill="#fff" opacity="0.85" transform="rotate(60 96 25)"/>
+                    <circle cx="92" cy="21" r="3" fill="#E5983A"/>
+                    <circle cx="92" cy="21" r="1.5" fill="#F0B95A"/>
+
+                    <!-- Small tilted daisy -->
+                    <ellipse cx="535" cy="14" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(-20 535 14)"/>
+                    <ellipse cx="541" cy="14" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(25 541 14)"/>
+                    <ellipse cx="538" cy="11" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(80 538 11)"/>
+                    <ellipse cx="538" cy="18" rx="2.8" ry="1.4" fill="#fff" opacity="0.8"/>
+                    <circle cx="538" cy="14" r="2.5" fill="#E5983A"/>
+                    <circle cx="538" cy="14" r="1.2" fill="#F0B95A"/>
+                </g>
+
+                <!-- Marigolds with ruffled petals -->
+                <g>
+                    <circle cx="258" cy="19" r="6" fill="#E5983A" opacity="0.8"/>
+                    <circle cx="254" cy="16" r="3" fill="#F0B95A" opacity="0.7"/>
+                    <circle cx="262" cy="16" r="3" fill="#F0B95A" opacity="0.7"/>
+                    <circle cx="258" cy="23" r="3" fill="#E5983A" opacity="0.6"/>
+                    <circle cx="258" cy="19" r="2.5" fill="#F0B95A"/>
+
+                    <circle cx="662" cy="11" r="7" fill="#E5983A" opacity="0.75"/>
+                    <circle cx="657" cy="8" r="3.5" fill="#F0B95A" opacity="0.65"/>
+                    <circle cx="667" cy="8" r="3.5" fill="#F0B95A" opacity="0.65"/>
+                    <circle cx="662" cy="16" r="3.2" fill="#E5983A" opacity="0.55"/>
+                    <circle cx="662" cy="11" r="3" fill="#F0B95A"/>
+                </g>
+
+                <!-- Lavender sprigs with multiple buds -->
+                <g>
+                    <path d="M160,140 Q155,100 165,72 Q170,55 162,30" stroke="#6B8A3A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <circle cx="163" cy="30" r="2.2" fill="#9E90AB"/>
+                    <circle cx="165" cy="35" r="2" fill="#9E90AB" opacity="0.85"/>
+                    <circle cx="162" cy="40" r="1.8" fill="#9E90AB" opacity="0.7"/>
+                    <circle cx="164" cy="45" r="1.5" fill="#9E90AB" opacity="0.55"/>
+                    <circle cx="163" cy="50" r="1.2" fill="#9E90AB" opacity="0.4"/>
+
+                    <path d="M470,140 Q478,95 465,62 Q458,42 468,18" stroke="#6B8A3A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <circle cx="467" cy="18" r="2.2" fill="#9E90AB"/>
+                    <circle cx="465" cy="23" r="2" fill="#9E90AB" opacity="0.85"/>
+                    <circle cx="468" cy="28" r="1.8" fill="#9E90AB" opacity="0.7"/>
+                    <circle cx="466" cy="33" r="1.5" fill="#9E90AB" opacity="0.55"/>
+                    <circle cx="467" cy="38" r="1.2" fill="#9E90AB" opacity="0.4"/>
+
+                    <path d="M620,140 Q615,92 625,60 Q630,40 622,20" stroke="#4D5B38" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <circle cx="623" cy="20" r="2" fill="#B5A6C2"/>
+                    <circle cx="625" cy="25" r="1.8" fill="#9E90AB" opacity="0.8"/>
+                    <circle cx="622" cy="30" r="1.6" fill="#9E90AB" opacity="0.65"/>
+                    <circle cx="624" cy="35" r="1.3" fill="#9E90AB" opacity="0.5"/>
+                </g>
+
+                <!-- Purple cornflowers with spiky petals -->
+                <g>
+                    <path d="M372,10 l-4,-6 l3,5 l-6,-2 l5,2.5 l-5,3 l5.5,-2 l-3,5.5 l3.5,-4.5 l2,6 l0,-5.5 l4,5 l-2.5,-5 l6,2 l-5.5,-3 l5,-3.5 l-5.5,2.5 l3,-5.5z" fill="#9E90AB" opacity="0.85"/>
+                    <circle cx="372" cy="10" r="3" fill="#B5A6C2"/>
+                    <circle cx="372" cy="10" r="1.5" fill="#E0D9C6"/>
+
+                    <path d="M45,38 l-3,-5 l2.5,4 l-5,-1.5 l4,2 l-4,2.5 l4.5,-1.5 l-2.5,4.5 l3,-3.5 l1.5,5 l0,-4.5 l3,4 l-2,-4 l5,1.5 l-4.5,-2.5 l4,-3 l-4.5,2 l2.5,-4.5z" fill="#9E90AB" opacity="0.75"/>
+                    <circle cx="45" cy="38" r="2.5" fill="#B5A6C2"/>
+                    <circle cx="45" cy="38" r="1.2" fill="#E0D9C6"/>
+                    <path d="M45,140 Q42,100 48,70 Q50,55 45,38" stroke="#4D5B38" stroke-width="1.2" fill="none"/>
+                </g>
+
+                <!-- Butterfly -->
+                <g transform="translate(310,28) rotate(-12)">
+                    <path d="M0,0 Q-8,-10 -5,-18 Q-2,-10 0,-2" fill="#9E90AB" opacity="0.6"/>
+                    <path d="M0,0 Q8,-10 5,-18 Q2,-10 0,-2" fill="#E5983A" opacity="0.55"/>
+                    <path d="M0,0 Q-6,6 -4,12 Q-1,6 0,2" fill="#9E90AB" opacity="0.5"/>
+                    <path d="M0,0 Q6,6 4,12 Q1,6 0,2" fill="#E5983A" opacity="0.45"/>
+                    <line x1="0" y1="-2" x2="0" y2="4" stroke="#4D5B38" stroke-width="0.6"/>
+                    <circle cx="-1" cy="-3" r="0.5" fill="#4D5B38"/>
+                    <circle cx="1" cy="-3" r="0.5" fill="#4D5B38"/>
+                </g>
+
+                <!-- Dandelion puffs floating away -->
+                <g opacity="0.35">
+                    <circle cx="195" cy="18" r="1" fill="#E0D9C6"/>
+                    <line x1="195" y1="19" x2="195" y2="23" stroke="#E0D9C6" stroke-width="0.4"/>
+                    <line x1="195" y1="18" x2="193" y2="15" stroke="#E0D9C6" stroke-width="0.3"/>
+                    <line x1="195" y1="18" x2="197" y2="15" stroke="#E0D9C6" stroke-width="0.3"/>
+                    <line x1="195" y1="18" x2="195" y2="14.5" stroke="#E0D9C6" stroke-width="0.3"/>
+
+                    <circle cx="210" cy="10" r="0.8" fill="#E0D9C6"/>
+                    <line x1="210" y1="10.8" x2="210" y2="14" stroke="#E0D9C6" stroke-width="0.3"/>
+                    <line x1="210" y1="10" x2="208.5" y2="7.5" stroke="#E0D9C6" stroke-width="0.25"/>
+                    <line x1="210" y1="10" x2="211.5" y2="7.5" stroke="#E0D9C6" stroke-width="0.25"/>
+
+                    <circle cx="505" cy="12" r="0.8" fill="#E0D9C6"/>
+                    <line x1="505" y1="12.8" x2="505" y2="16" stroke="#E0D9C6" stroke-width="0.3"/>
+                    <line x1="505" y1="12" x2="503.5" y2="9.5" stroke="#E0D9C6" stroke-width="0.25"/>
+                    <line x1="505" y1="12" x2="506.5" y2="9.5" stroke="#E0D9C6" stroke-width="0.25"/>
+
+                    <circle cx="690" cy="22" r="1" fill="#E0D9C6"/>
+                    <line x1="690" y1="23" x2="690" y2="27" stroke="#E0D9C6" stroke-width="0.4"/>
+                    <line x1="690" y1="22" x2="688" y2="19" stroke="#E0D9C6" stroke-width="0.3"/>
+                    <line x1="690" y1="22" x2="692" y2="19" stroke="#E0D9C6" stroke-width="0.3"/>
+                </g>
+
+                <!-- Tiny scattered buds and berries -->
+                <g opacity="0.55">
+                    <circle cx="30" cy="62" r="2" fill="#E5983A"/>
+                    <circle cx="135" cy="55" r="1.5" fill="#9E90AB"/>
+                    <circle cx="200" cy="58" r="1.2" fill="#fff"/>
+                    <circle cx="290" cy="50" r="2" fill="#E5983A"/>
+                    <circle cx="340" cy="65" r="1.5" fill="#8FA34E"/>
+                    <circle cx="420" cy="52" r="1.8" fill="#9E90AB"/>
+                    <circle cx="510" cy="58" r="1.3" fill="#fff"/>
+                    <circle cx="580" cy="48" r="2" fill="#E5983A"/>
+                    <circle cx="650" cy="55" r="1.5" fill="#8FA34E"/>
+                    <circle cx="700" cy="50" r="1.8" fill="#9E90AB"/>
+                </g>
+
+                <!-- Curly vine tendrils -->
+                <g fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.35" stroke-linecap="round">
+                    <path d="M130,80 Q125,72 130,65 Q135,58 130,52"/>
+                    <path d="M400,90 Q395,82 400,75 Q405,68 400,62 Q395,56 400,50"/>
+                    <path d="M590,85 Q585,78 590,72 Q595,66 590,60"/>
+                </g>
+            </svg>
+        </div>
     </main>
 </body>
 </html>
