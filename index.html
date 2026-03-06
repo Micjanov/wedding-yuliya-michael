@@ -140,6 +140,40 @@
         }
 
         /* ========================================
+           Language Switcher
+           ======================================== */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 14px var(--gap-md) 0;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-muted);
+            cursor: pointer;
+            transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .lang-btn.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #fff;
+        }
+
+        /* ========================================
            Hero Section
            ======================================== */
         .hero {
@@ -349,6 +383,10 @@
                 display: none;
             }
 
+            .lang-switcher {
+                display: none;
+            }
+
             .link-btn {
                 page-break-inside: avoid;
             }
@@ -363,10 +401,16 @@
 </head>
 <body>
     <main class="card">
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+            <button class="lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+        </div>
+
         <header class="hero">
             <h1>Yuliya <span class="ampersand">&amp;</span> Michael</h1>
-            <time class="date" datetime="2026-08-01">August 1, 2026</time>
-            <p class="subtitle">Join us in celebrating our special day</p>
+            <time class="date" datetime="2026-08-01" data-i18n="date">August 1, 2026</time>
+            <p class="subtitle" data-i18n="subtitle">Join us in celebrating our special day</p>
 
             <svg class="sprig" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M10,18 Q20,14 40,12 Q60,14 70,18" fill="none" stroke="#8FA34E" stroke-width="1" opacity="0.5"/>
@@ -387,17 +431,15 @@
                     </svg>
                 </div>
                 <div class="link-content">
-                    <div class="link-label">RSVP</div>
-                    <div class="link-desc">Let us know if you can join us</div>
+                    <div class="link-label" data-i18n="rsvp_label">RSVP</div>
+                    <div class="link-desc" data-i18n="rsvp_desc">Let us know if you can join us</div>
                 </div>
             </a>
         </nav>
 
-        <p class="coming-soon">More info coming soon</p>
+        <p class="coming-soon" data-i18n="coming_soon">More info coming soon</p>
 
-        <footer class="footer">
-            <small>Made with love for our celebration</small>
-        </footer>
+        <footer class="footer" data-i18n="footer">Made with love</footer>
 
         <div class="meadow-bottom" aria-hidden="true">
             <svg viewBox="0 0 720 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
@@ -584,5 +626,66 @@
             </svg>
         </div>
     </main>
+
+    <script>
+        (function () {
+            var translations = {
+                en: {
+                    date: 'August 1, 2026',
+                    subtitle: 'Join us in celebrating our special day',
+                    rsvp_label: 'RSVP',
+                    rsvp_desc: 'Let us know if you can join us',
+                    coming_soon: 'More info coming soon',
+                    footer: 'Made with love'
+                },
+                nl: {
+                    date: '1 augustus 2026',
+                    subtitle: 'Vier met ons onze bijzondere dag',
+                    rsvp_label: 'RSVP',
+                    rsvp_desc: 'Laat ons weten of je erbij kunt zijn',
+                    coming_soon: 'Meer informatie volgt binnenkort',
+                    footer: 'Gemaakt met liefde'
+                },
+                ru: {
+                    date: '1 августа 2026',
+                    subtitle: 'Приглашаем вас разделить с нами этот особенный день',
+                    rsvp_label: 'Подтвердить участие',
+                    rsvp_desc: 'Сообщите нам, сможете ли вы присоединиться',
+                    coming_soon: 'Скоро будет больше информации',
+                    footer: 'Сделано с любовью'
+                }
+            };
+
+            function setLang(lang) {
+                if (!translations[lang]) return;
+                var items = document.querySelectorAll('[data-i18n]');
+                for (var i = 0; i < items.length; i++) {
+                    var key = items[i].getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        items[i].textContent = translations[lang][key];
+                    }
+                }
+                document.documentElement.lang = lang;
+                var buttons = document.querySelectorAll('.lang-btn');
+                for (var j = 0; j < buttons.length; j++) {
+                    buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);
+                }
+                try { localStorage.setItem('lang', lang); } catch (e) {}
+            }
+
+            var buttons = document.querySelectorAll('.lang-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function () {
+                    setLang(this.getAttribute('data-lang'));
+                });
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem('lang'); } catch (e) {}
+            if (saved && translations[saved]) {
+                setLang(saved);
+            }
+        })();
+    </script>
 </body>
 </html>
