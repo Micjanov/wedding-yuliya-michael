@@ -98,7 +98,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             display: flex;
-            align-items: center;
             justify-content: center;
         }
 
@@ -108,6 +107,8 @@
         .card {
             width: 100%;
             max-width: var(--max-width);
+            margin-top: 20px;
+            margin-bottom: 20px;
             background: rgba(255, 253, 248, 0.88);
             backdrop-filter: blur(12px);
             border-radius: var(--radius-lg);
@@ -302,6 +303,277 @@
         }
 
         /* ========================================
+           Section Headers
+           ======================================== */
+        .section-header {
+            font-family: var(--font-serif);
+            font-weight: var(--font-weight-bold);
+            font-size: clamp(18px, 4vw, 22px);
+            color: var(--color-wildflower-forest);
+            text-align: center;
+            margin: 0 0 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========================================
+           Locations Timeline
+           ======================================== */
+        .locations {
+            padding: 8px var(--gap-md) 28px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Vertical connecting line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg,
+                var(--color-wildflower-olive) 0%,
+                var(--color-wildflower-lavender) 50%,
+                var(--color-wildflower-olive) 100%);
+            opacity: 0.35;
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--gap-sm);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Timeline dot */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--color-wildflower-olive);
+            background: var(--color-surface);
+        }
+
+        .timeline-item--ceremony::before {
+            background: var(--color-wildflower-olive);
+        }
+
+        .timeline-item--walk::before {
+            background: var(--color-wildflower-lavender);
+            border-color: var(--color-wildflower-lavender);
+        }
+
+        .timeline-item--festivity::before {
+            background: var(--color-wildflower-orange);
+            border-color: var(--color-wildflower-orange);
+        }
+
+        .timeline-time {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-wildflower-olive);
+            background: rgba(143, 163, 78, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-title {
+            font-weight: var(--font-weight-semibold);
+            font-size: 15px;
+            color: var(--color-text-primary);
+            margin-bottom: 3px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            text-decoration: none;
+            margin-top: 6px;
+            transition: color 150ms ease;
+        }
+
+        .timeline-link:hover,
+        .timeline-link:focus-visible {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        .timeline-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .timeline-link svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        .timeline-note {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border-subtle);
+            line-height: 1.4;
+        }
+
+        /* ========================================
+           Accommodation Section
+           ======================================== */
+        .accommodation {
+            padding: 8px var(--gap-md) 28px;
+        }
+
+        .accommodation-intro {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            text-align: center;
+            margin: -12px 0 16px;
+            line-height: 1.4;
+        }
+
+        .hotel-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hotel-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hotel-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hotel-name {
+            font-weight: var(--font-weight-semibold);
+            font-size: 14px;
+            color: var(--color-text-primary);
+        }
+
+        .hotel-address {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        .hotel-price {
+            flex-shrink: 0;
+            font-size: 14px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-wildflower-olive);
+            letter-spacing: -0.5px;
+        }
+
+        .hotel-price--dim {
+            opacity: 0.35;
+        }
+
+        /* ========================================
+           Dress Code Section
+           ======================================== */
+        .dresscode {
+            padding: 8px var(--gap-md) 20px;
+            text-align: center;
+        }
+
+        .dresscode-text {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin: 0 0 12px;
+        }
+
+        .palette-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 150ms ease;
+        }
+
+        .palette-link:hover,
+        .palette-link:focus-visible {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        .palette-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .palette-swatches {
+            display: inline-flex;
+            gap: 3px;
+        }
+
+        .palette-swatches span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* ========================================
+           Divider between sections
+           ======================================== */
+        .section-divider {
+            display: block;
+            margin: 8px auto 0;
+            width: 60px;
+            height: 20px;
+        }
+
+        /* ========================================
            Coming Soon Notice
            ======================================== */
         .coming-soon {
@@ -341,6 +613,32 @@
 
             .links {
                 padding: var(--gap-md) 16px 28px;
+            }
+
+            .locations {
+                padding: 8px 16px 24px;
+            }
+
+            .timeline {
+                padding-left: 24px;
+            }
+
+            .timeline-item {
+                padding: 10px 14px;
+            }
+
+            .timeline-item::before {
+                left: -20px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .accommodation {
+                padding: 8px 16px 24px;
+            }
+
+            .hotel-item {
+                padding: 8px 12px;
             }
 
             .link-btn {
@@ -396,6 +694,16 @@
                 font-size: 10px;
                 color: #666;
             }
+
+            .timeline-link::after {
+                content: " (" attr(href) ")";
+                font-size: 10px;
+                color: #666;
+            }
+
+            .timeline-item {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
@@ -423,7 +731,7 @@
         </header>
 
         <nav class="links" aria-label="Wedding information links">
-            <a class="link-btn" href="https://forms.gle/REPLACE_ME_RSVP" target="_blank" rel="noopener noreferrer">
+            <a class="link-btn" id="rsvp-link" href="https://forms.gle/AFgs9bL5xAzyTo7A8" target="_blank" rel="noopener noreferrer">
                 <div class="flower-ico flower-ico--rsvp" aria-hidden="true">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M12 2c1.1 0 2 .9 2 2 0 1.4-.6 3-1.8 4.2C11.5 9.4 10 10 8.5 10 7 10 6 9 6 8s.5-2 1.3-3C8.9 3.5 10.4 2 12 2z" fill="currentColor" opacity="0.95"/>
@@ -436,6 +744,126 @@
                 </div>
             </a>
         </nav>
+
+        <!-- Small decorative divider between sections -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="20" cy="11" r="1.8" fill="#9E90AB" opacity="0.5"/>
+            <circle cx="30" cy="9" r="2" fill="#E5983A" opacity="0.45"/>
+            <circle cx="40" cy="11" r="1.8" fill="#9E90AB" opacity="0.5"/>
+        </svg>
+
+        <section class="locations" aria-label="Day timeline and locations">
+            <h2 class="section-header" data-i18n="locations_title">The Day</h2>
+
+            <div class="timeline">
+                <article class="timeline-item timeline-item--ceremony">
+                    <div class="timeline-time" data-i18n="ceremony_time">10:40</div>
+                    <div class="timeline-title" data-i18n="ceremony_title">Ceremony</div>
+                    <div class="timeline-desc" data-i18n="ceremony_desc">Ghent Town Hall, Botermarkt 1, 9000 Ghent</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/D2ouncZg4657bJLG6" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_map">View on map</span>
+                    </a>
+                </article>
+
+                <article class="timeline-item timeline-item--walk">
+                    <div class="timeline-time" data-i18n="walk_time">After ceremony</div>
+                    <div class="timeline-title" data-i18n="walk_title">Walk &amp; Boat Trip</div>
+                    <div class="timeline-desc" data-i18n="walk_desc">A short 5-10 minute walk to Korenlei 4/A, followed by a 20-minute boat trip to the festivity location.</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/jUEFhJBpG7EBGGK38" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_boarding">View boarding point</span>
+                    </a>
+                </article>
+
+                <article class="timeline-item timeline-item--festivity">
+                    <div class="timeline-time" data-i18n="festivity_time">Afternoon &amp; Evening</div>
+                    <div class="timeline-title" data-i18n="festivity_title">Festivity</div>
+                    <div class="timeline-desc" data-i18n="festivity_desc">Saint Peter's Abbey, Ghent</div>
+                    <div class="timeline-note" data-i18n="festivity_note">Dinner is planned in the afternoon. Details will be updated on this page.</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/zT685j5PDxYs9V5X8" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_map">View on map</span>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
+        <section class="dresscode" aria-label="Dress code">
+            <h2 class="section-header" data-i18n="dresscode_title">What to Wear</h2>
+            <p class="dresscode-text" data-i18n="dresscode_text">There is no dress code. We want everyone to feel comfortable and enjoy the day. If you'd like some colour inspiration, here is the palette of the event:</p>
+            <div class="palette-swatches" aria-label="Event colour palette: lavender, marigold, cream, olive, forest green">
+                <span style="background:#9E90AB" title="Lavender"></span>
+                <span style="background:#E5983A" title="Marigold"></span>
+                <span style="background:#E0D9C6" title="Cream"></span>
+                <span style="background:#8FA34E" title="Olive"></span>
+                <span style="background:#4D5B38" title="Forest green"></span>
+            </div>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#E5983A" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#9E90AB" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#E5983A" opacity="0.45"/>
+        </svg>
+
+        <section class="accommodation" aria-label="Accommodation suggestions">
+            <h2 class="section-header" data-i18n="accom_title">Where to Stay</h2>
+            <p class="accommodation-intro" data-i18n="accom_intro">Looking for a place to stay? Here are a few suggestions near both venues. Ghent has plenty of options, so feel free to explore on your own as well.</p>
+
+            <div class="hotel-list">
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">ibis Gent Centrum Kathedraal</div>
+                        <div class="hotel-address" data-i18n="hotel1_addr">Limburgstraat 2 &middot; next to Town Hall</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">ibis Gent Centrum Opera</div>
+                        <div class="hotel-address" data-i18n="hotel2_addr">Nederkouter 24</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">B&amp;B Hotel Gent Centrum</div>
+                        <div class="hotel-address" data-i18n="hotel3_addr">Voldersstraat 17</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Hotel Onderbergen</div>
+                        <div class="hotel-address" data-i18n="hotel4_addr">Onderbergen 69 &middot; between both venues</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;</span><span class="hotel-price--dim">&#8364;&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Parkhotel Gent</div>
+                        <div class="hotel-address" data-i18n="hotel5_addr">Nieuwebosstraat 1</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;</span><span class="hotel-price--dim">&#8364;&#8364;</span></div>
+                </div>
+            </div>
+        </section>
 
         <p class="coming-soon" data-i18n="coming_soon">More info coming soon</p>
 
@@ -635,6 +1063,29 @@
                     subtitle: 'Join us in celebrating our special day',
                     rsvp_label: 'RSVP',
                     rsvp_desc: 'Let us know if you can join us',
+                    rsvp_url: 'https://forms.gle/AFgs9bL5xAzyTo7A8',
+                    locations_title: 'The Day',
+                    ceremony_time: '10:40',
+                    ceremony_title: 'Ceremony',
+                    ceremony_desc: 'Ghent Town Hall, Botermarkt 1, 9000 Ghent',
+                    walk_time: 'After ceremony',
+                    walk_title: 'Walk & Boat Trip',
+                    walk_desc: 'A short 5\u201310 minute walk to Korenlei 4/A, followed by a 20-minute boat trip to the festivity location.',
+                    festivity_time: 'Afternoon & Evening',
+                    festivity_title: 'Festivity',
+                    festivity_desc: 'Saint Peter\u2019s Abbey, Ghent',
+                    festivity_note: 'Dinner is planned in the afternoon. Details will be updated on this page.',
+                    view_map: 'View on map',
+                    view_boarding: 'View boarding point',
+                    dresscode_title: 'What to Wear',
+                    dresscode_text: 'There is no dress code. We want everyone to feel comfortable and enjoy the day. If you\u2019d like some colour inspiration, here is the palette of the event:',
+                    accom_title: 'Where to Stay',
+                    accom_intro: 'Looking for a place to stay? Here are a few suggestions near both venues. Ghent has plenty of options, so feel free to explore on your own as well.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 next to Town Hall',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 between both venues',
+                    hotel5_addr: 'Nieuwebosstraat 1',
                     coming_soon: 'More info coming soon',
                     footer: 'Made with love'
                 },
@@ -643,16 +1094,62 @@
                     subtitle: 'Vier met ons onze bijzondere dag',
                     rsvp_label: 'RSVP',
                     rsvp_desc: 'Laat ons weten of je erbij kunt zijn',
+                    rsvp_url: '', /* WIP — replace with NL Google Forms link */
+                    locations_title: 'De Dag',
+                    ceremony_time: '10:40',
+                    ceremony_title: 'Ceremonie',
+                    ceremony_desc: 'Stadhuis van Gent, Botermarkt 1, 9000 Gent',
+                    walk_time: 'Na de ceremonie',
+                    walk_title: 'Wandeling & Boottocht',
+                    walk_desc: 'Een korte wandeling van 5\u201310 minuten naar de Korenlei 4/A, gevolgd door een boottocht van 20 minuten naar de feestlocatie.',
+                    festivity_time: 'Namiddag & Avond',
+                    festivity_title: 'Feest',
+                    festivity_desc: 'Sint-Pietersabdij, Gent',
+                    festivity_note: 'Diner is gepland in de namiddag. Details worden op deze pagina bijgewerkt.',
+                    view_map: 'Bekijk op kaart',
+                    view_boarding: 'Bekijk instapplaats',
+                    dresscode_title: 'Dresscode',
+                    dresscode_text: 'Er is geen dresscode. We willen dat iedereen zich op zijn gemak voelt en van de dag geniet. Wil je wat kleurinspiratie? Hier is het kleurenpalet van het feest:',
+                    accom_title: 'Overnachten',
+                    accom_intro: 'Op zoek naar een overnachting? Hier zijn een paar suggesties dicht bij beide locaties. Gent heeft volop keuze, dus voel je vrij om ook zelf rond te kijken.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 naast het Stadhuis',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 tussen beide locaties',
+                    hotel5_addr: 'Nieuwebosstraat 1',
                     coming_soon: 'Meer informatie volgt binnenkort',
                     footer: 'Gemaakt met liefde'
                 },
                 ru: {
-                    date: '1 августа 2026',
-                    subtitle: 'Приглашаем вас разделить с нами этот особенный день',
-                    rsvp_label: 'Подтвердить участие',
-                    rsvp_desc: 'Сообщите нам, сможете ли вы присоединиться',
-                    coming_soon: 'Скоро будет больше информации',
-                    footer: 'Сделано с любовью'
+                    date: '1 \u0430\u0432\u0433\u0443\u0441\u0442\u0430 2026',
+                    subtitle: '\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0430\u0435\u043c \u0432\u0430\u0441 \u0440\u0430\u0437\u0434\u0435\u043b\u0438\u0442\u044c \u0441 \u043d\u0430\u043c\u0438 \u044d\u0442\u043e\u0442 \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u044b\u0439 \u0434\u0435\u043d\u044c',
+                    rsvp_label: '\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0443\u0447\u0430\u0441\u0442\u0438\u0435',
+                    rsvp_desc: '\u0421\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043d\u0430\u043c, \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043b\u0438 \u0432\u044b \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f',
+                    rsvp_url: '', /* WIP \u2014 replace with RU Google Forms link */
+                    locations_title: '\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0434\u043d\u044f',
+                    ceremony_time: '10:40',
+                    ceremony_title: '\u0426\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u044f',
+                    ceremony_desc: '\u0420\u0430\u0442\u0443\u0448\u0430 \u0413\u0435\u043d\u0442\u0430, Botermarkt 1, 9000 Gent',
+                    walk_time: '\u041f\u043e\u0441\u043b\u0435 \u0446\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u0438',
+                    walk_title: '\u041f\u0440\u043e\u0433\u0443\u043b\u043a\u0430 \u0438 \u043f\u0440\u043e\u0433\u0443\u043b\u043a\u0430 \u043d\u0430 \u043a\u0430\u0442\u0435\u0440\u0435',
+                    walk_desc: '\u041a\u043e\u0440\u043e\u0442\u043a\u0430\u044f \u043f\u0440\u043e\u0433\u0443\u043b\u043a\u0430 5\u201310 \u043c\u0438\u043d\u0443\u0442 \u0434\u043e Korenlei 4/A, \u0437\u0430\u0442\u0435\u043c 20-\u043c\u0438\u043d\u0443\u0442\u043d\u0430\u044f \u043f\u0440\u043e\u0433\u0443\u043b\u043a\u0430 \u043d\u0430 \u043a\u0430\u0442\u0435\u0440\u0435 \u0434\u043e \u043c\u0435\u0441\u0442\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u043e\u0432\u0430\u043d\u0438\u044f.',
+                    festivity_time: '\u0414\u0435\u043d\u044c \u0438 \u0432\u0435\u0447\u0435\u0440',
+                    festivity_title: '\u041f\u0440\u0430\u0437\u0434\u043d\u043e\u0432\u0430\u043d\u0438\u0435',
+                    festivity_desc: '\u0410\u0431\u0431\u0430\u0442\u0441\u0442\u0432\u043e \u0421\u0432\u044f\u0442\u043e\u0433\u043e \u041f\u0435\u0442\u0440\u0430, \u0413\u0435\u043d\u0442',
+                    festivity_note: '\u041e\u0431\u0435\u0434 \u0437\u0430\u043f\u043b\u0430\u043d\u0438\u0440\u043e\u0432\u0430\u043d \u043d\u0430 \u0432\u0442\u043e\u0440\u0443\u044e \u043f\u043e\u043b\u043e\u0432\u0438\u043d\u0443 \u0434\u043d\u044f. \u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e\u0441\u0442\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u044b \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435.',
+                    view_map: '\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043d\u0430 \u043a\u0430\u0440\u0442\u0435',
+                    view_boarding: '\u041c\u0435\u0441\u0442\u043e \u043f\u043e\u0441\u0430\u0434\u043a\u0438 \u043d\u0430 \u043a\u0430\u0442\u0435\u0440',
+                    dresscode_title: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434',
+                    dresscode_text: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434\u0430 \u043d\u0435\u0442. \u041c\u044b \u0445\u043e\u0442\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0432\u0441\u0435\u043c \u0431\u044b\u043b\u043e \u043a\u043e\u043c\u0444\u043e\u0440\u0442\u043d\u043e \u0438 \u0432\u0441\u0435 \u043d\u0430\u0441\u043b\u0430\u0436\u0434\u0430\u043b\u0438\u0441\u044c \u044d\u0442\u0438\u043c \u0434\u043d\u0451\u043c. \u0415\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0438\u0442\u044c\u0441\u044f \u0446\u0432\u0435\u0442\u0430\u043c\u0438 \u2014 \u0432\u043e\u0442 \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f:',
+                    accom_title: '\u0413\u0434\u0435 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c\u0441\u044f',
+                    accom_intro: '\u0418\u0449\u0435\u0442\u0435 \u0433\u0434\u0435 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c\u0441\u044f? \u0412\u043e\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432 \u0440\u044f\u0434\u043e\u043c \u0441 \u043e\u0431\u0435\u0438\u043c\u0438 \u043b\u043e\u043a\u0430\u0446\u0438\u044f\u043c\u0438. \u0412 \u0413\u0435\u043d\u0442\u0435 \u043c\u043d\u043e\u0433\u043e \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432, \u0442\u0430\u043a \u0447\u0442\u043e \u0432\u044b \u0442\u0430\u043a\u0436\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0438\u0441\u043a\u0430\u0442\u044c \u0441\u0430\u043c\u043e\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u043d\u043e.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 \u0440\u044f\u0434\u043e\u043c \u0441 \u0420\u0430\u0442\u0443\u0448\u0435\u0439',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 \u043c\u0435\u0436\u0434\u0443 \u043e\u0431\u0435\u0438\u043c\u0438 \u043b\u043e\u043a\u0430\u0446\u0438\u044f\u043c\u0438',
+                    hotel5_addr: 'Nieuwebosstraat 1',
+                    coming_soon: '\u0421\u043a\u043e\u0440\u043e \u0431\u0443\u0434\u0435\u0442 \u0431\u043e\u043b\u044c\u0448\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438',
+                    footer: '\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u043b\u044e\u0431\u043e\u0432\u044c\u044e'
                 }
             };
 
@@ -664,6 +1161,12 @@
                     if (translations[lang][key]) {
                         items[i].textContent = translations[lang][key];
                     }
+                }
+                /* Update RSVP link — fall back to English URL if language-specific one is WIP */
+                var rsvpLink = document.getElementById('rsvp-link');
+                if (rsvpLink) {
+                    var url = translations[lang].rsvp_url || translations.en.rsvp_url;
+                    rsvpLink.href = url;
                 }
                 document.documentElement.lang = lang;
                 var buttons = document.querySelectorAll('.lang-btn');
