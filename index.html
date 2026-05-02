@@ -1346,7 +1346,7 @@
                 }
             };
 
-            function setLang(lang) {
+            function setLang(lang, updateURL) {
                 if (!translations[lang]) return;
                 var items = document.querySelectorAll('[data-i18n]');
                 for (var i = 0; i < items.length; i++) {
@@ -1367,6 +1367,13 @@
                     buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);
                 }
                 try { localStorage.setItem('lang', lang); } catch (e) {}
+                /* Update URL query parameter without reloading */
+                if (updateURL !== false) {
+                    var params = new URLSearchParams(window.location.search);
+                    params.set('lang', lang);
+                    var newURL = window.location.pathname + '?' + params.toString() + window.location.hash;
+                    history.replaceState(null, '', newURL);
+                }
             }
 
             var buttons = document.querySelectorAll('.lang-btn');
@@ -1376,10 +1383,18 @@
                 });
             }
 
+            /* Priority: URL ?lang= param > localStorage */
+            var urlParams = new URLSearchParams(window.location.search);
+            var urlLang = urlParams.get('lang');
             var saved = null;
             try { saved = localStorage.getItem('lang'); } catch (e) {}
-            if (saved && translations[saved]) {
+
+            if (urlLang && translations[urlLang]) {
+                setLang(urlLang, false);
+            } else if (saved && translations[saved]) {
                 setLang(saved);
+            } else {
+                setLang('en');
             }
         })();
     </script>
