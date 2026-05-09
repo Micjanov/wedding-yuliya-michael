@@ -6,8 +6,8 @@ Static wedding info page for Yuliya & Michael. Single HTML file, no build system
 ## Page Structure
 Single scrollable page with these sections (in order):
 1. **Language switcher** (EN / NL / RU)
-2. **Hero** — names, date, subtitle, decorative sprig
-3. **RSVP link** — links to Google Forms (per-language URLs, NL/RU still WIP)
+2. **Hero** — names, date, location (Ghent/Gent/Гент), decorative sprig
+3. **RSVP link** — links to Google Forms (per-language URLs)
 4. **The Day (timeline)** — ceremony (Town Hall), walk & boat trip, festivity (Sint-Pietersabdij)
 5. **Dress code** — no dress code, colour palette swatches
 6. **Accommodation** — 5 hotel suggestions with price indicators
@@ -40,7 +40,7 @@ Single scrollable page with these sections (in order):
 - **Section dividers**: Small decorative SVG wildflower sprigs between major sections
 
 ## Customization Guide
-- **RSVP URLs**: Update `rsvp_url` in each language's translation object (NL and RU are currently empty/WIP, falling back to EN)
+- **RSVP URLs**: Update `rsvp_url` in each language's translation object
 - **Content**: Update names in `<h1>`, date in `<time datetime>`
 - **Colors**: Modify `--color-*` variables in `:root`
 - **Fonts**: Remove Google Fonts links and update `--font-*` variables for system fonts only
@@ -56,3 +56,12 @@ Single scrollable page with these sections (in order):
 - SEO meta tags (OpenGraph, description, theme-color)
 - Fluid typography with clamp() for responsive scaling
 - Colour palette swatches derived from kleurenpalet.jpeg
+
+## Additional Files
+- **create-translated-forms.gs** — Google Apps Script to create translated (NL, RU) RSVP Google Forms. Run via script.google.com.
+- **contact-line-translations.txt** — Translated contact/question prompt lines (EN, NL, RU)
+
+## Translation Guidelines
+- Cross-check Russian translations via Google Translate API (`translate.googleapis.com`) to catch anglicisms and unnatural phrasing
+- Avoid common pitfalls: "локация" (use "место"), repeated words (e.g. "прогулка и прогулка"), literal calques like "дайте нам знать" (prefer "не стесняйтесь обращаться к нам")
+- Dutch translations should use natural informal register (jij/je, not u) matching a wedding invitation tone

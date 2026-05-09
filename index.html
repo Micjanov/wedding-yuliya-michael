@@ -51,7 +51,7 @@
             --border-card: rgba(158, 144, 171, 0.12);
 
             /* Spacing and sizing */
-            --max-width: 720px;
+            --max-width: 800px;
             --radius-sm: 10px;
             --radius-md: 12px;
             --radius-lg: 20px;
@@ -119,25 +119,19 @@
         }
 
         /* ========================================
-           Wildflower Meadow Decoration (Bottom)
+           Wildflower Banner Decoration (Bottom)
            ======================================== */
         .meadow-bottom {
             width: 100%;
-            height: 140px;
-            position: relative;
             overflow: hidden;
-            background: linear-gradient(180deg,
-                transparent 0%,
-                rgba(224, 217, 198, 0.10) 40%,
-                rgba(143, 163, 78, 0.08) 100%);
+            line-height: 0;
+            text-align: center;
         }
 
-        .meadow-bottom svg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .meadow-bottom img {
+            max-width: 100%;
+            height: auto;
+            display: inline-block;
         }
 
         /* ========================================
@@ -670,6 +664,13 @@
             text-align: justify;
         }
 
+        .gifts-iban {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin: 12px 0 0;
+        }
+
         /* ========================================
            Coming Soon Notice
            ======================================== */
@@ -698,10 +699,6 @@
         @media (max-width: 520px) {
             body {
                 padding: 20px 16px;
-            }
-
-            .meadow-bottom {
-                height: 110px;
             }
 
             .hero {
@@ -905,7 +902,15 @@
             </div>
 
             <div class="parking">
-                <h3 class="parking-header" data-i18n="parking_title">Parking</h3>
+                <!-- Small decorative divider -->
+                <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+                    <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+                    <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+                    <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+                </svg>
+
+                <h3 class="section-header" data-i18n="parking_title">Parking</h3>
                 <div class="parking-list">
                     <div class="parking-item">
                         <div class="parking-info">
@@ -1034,9 +1039,68 @@
             <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
         </svg>
 
+        <section class="accommodation" aria-label="Things to do in Ghent">
+            <h2 class="section-header" data-i18n="todo_title">Things to Do</h2>
+            <p class="accommodation-intro" data-i18n="todo_intro">Ghent is a beautiful city with plenty to explore. Here are a few highlights worth visiting while you're here.</p>
+
+            <div class="hotel-list">
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Hotel d'Hane Steenhuyse</div>
+                        <div class="hotel-address" data-i18n="todo1_desc">Stunning 18th-century palace with rococo interiors</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo2_name">Belfry of Ghent</div>
+                        <div class="hotel-address" data-i18n="todo2_desc">91-metre tower with panoramic views of the city</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Gravensteen</div>
+                        <div class="hotel-address" data-i18n="todo3_desc">Medieval castle of the Counts of Flanders</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo4_name">St Bavo's Cathedral</div>
+                        <div class="hotel-address" data-i18n="todo4_desc">Home to the Ghent Altarpiece by the Van Eyck brothers</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Graslei &amp; Korenlei</div>
+                        <div class="hotel-address" data-i18n="todo5_desc">Picturesque medieval waterfront along the Leie river</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo6_name">St Bavo's Abbey</div>
+                        <div class="hotel-address" data-i18n="todo6_desc">Ruins of a medieval abbey</div>
+                    </div>
+                </div>
+            </div>
+            <p class="accommodation-intro" style="margin-top:14px;margin-bottom:0"><span data-i18n="todo_outro">Ghent is also a wonderful city to simply wander around, with charming streets and hidden corners waiting to be discovered.</span> <a class="timeline-link" id="citywalk-link" href="https://visit.gent.be/en/see-do/ghent-city-walk-quirky-charm" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:13px;height:13px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg> <span data-i18n="citywalk_label">Try this city walk by Visit Gent</span></a></p>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
         <section class="gifts" aria-label="Gifts">
             <h2 class="section-header" data-i18n="gifts_title">Gifts</h2>
             <p class="gifts-text" data-i18n="gifts_text">Your presence means the world to us, especially if you're travelling from afar. We have no gift wishes, but if you'd still like to give something, a contribution would be very much appreciated.</p>
+            <p class="gifts-iban">BE30 9734 8064 2411</p>
         </section>
 
         <p class="coming-soon" data-i18n="coming_soon">More info coming soon</p>
@@ -1044,188 +1108,7 @@
         <footer class="footer" data-i18n="footer">Made with love</footer>
 
         <div class="meadow-bottom" aria-hidden="true">
-            <svg viewBox="0 0 720 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-
-                <!-- Swaying grass — varied curves and heights -->
-                <g opacity="0.45">
-                    <path d="M5,140 Q0,80 12,50 Q8,85 15,140" fill="#8FA34E"/>
-                    <path d="M22,140 Q30,70 24,28 Q20,75 30,140" fill="#6B8A3A"/>
-                    <path d="M50,140 Q44,90 55,55 Q48,88 60,140" fill="#4D5B38"/>
-                    <path d="M75,140 Q82,65 70,30 Q78,70 85,140" fill="#8FA34E"/>
-                    <path d="M110,140 Q105,80 115,48 Q108,82 120,140" fill="#6B8A3A"/>
-                    <path d="M155,140 Q162,55 148,20 Q158,60 165,140" fill="#4D5B38"/>
-                    <path d="M190,140 Q184,85 195,50 Q188,82 200,140" fill="#8FA34E"/>
-                    <path d="M235,140 Q240,60 228,35 Q237,65 245,140" fill="#6B8A3A"/>
-                    <path d="M270,140 Q264,75 275,42 Q268,78 280,140" fill="#8FA34E"/>
-                    <path d="M305,140 Q312,50 298,18 Q308,55 315,140" fill="#4D5B38"/>
-                    <path d="M345,140 Q338,80 350,45 Q342,78 355,140" fill="#8FA34E"/>
-                    <path d="M380,140 Q387,58 374,26 Q384,62 390,140" fill="#6B8A3A"/>
-                    <path d="M415,140 Q408,75 420,40 Q412,78 425,140" fill="#4D5B38"/>
-                    <path d="M455,140 Q462,52 448,22 Q458,58 465,140" fill="#8FA34E"/>
-                    <path d="M495,140 Q488,82 500,48 Q492,80 505,140" fill="#6B8A3A"/>
-                    <path d="M530,140 Q538,55 524,28 Q534,60 540,140" fill="#4D5B38"/>
-                    <path d="M565,140 Q558,78 570,42 Q562,76 575,140" fill="#8FA34E"/>
-                    <path d="M600,140 Q608,50 594,20 Q604,56 610,140" fill="#6B8A3A"/>
-                    <path d="M640,140 Q633,72 645,38 Q637,75 650,140" fill="#8FA34E"/>
-                    <path d="M675,140 Q682,48 668,16 Q678,54 685,140" fill="#4D5B38"/>
-                    <path d="M705,140 Q698,80 710,44 Q702,78 715,140" fill="#6B8A3A"/>
-                </g>
-
-                <!-- Curving stems with leaves -->
-                <g fill="none" stroke-linecap="round">
-                    <!-- Tall swaying stem left -->
-                    <path d="M90,140 Q85,100 95,70 Q100,50 92,22" stroke="#6B8A3A" stroke-width="1.8"/>
-                    <path d="M95,70 Q102,65 108,68" fill="#8FA34E" stroke="none"/>
-                    <path d="M93,52 Q85,48 82,52" fill="#8FA34E" stroke="none"/>
-
-                    <!-- Leaning stem -->
-                    <path d="M250,140 Q245,105 260,75 Q270,55 258,20" stroke="#4D5B38" stroke-width="1.6"/>
-                    <path d="M260,75 Q268,70 273,74" fill="#8FA34E" stroke="none"/>
-                    <path d="M264,50 Q256,45 253,50" fill="#6B8A3A" stroke="none"/>
-
-                    <!-- Graceful curve center -->
-                    <path d="M370,140 Q360,95 375,65 Q385,40 372,10" stroke="#6B8A3A" stroke-width="1.8"/>
-                    <path d="M375,65 Q383,60 388,64" fill="#8FA34E" stroke="none"/>
-                    <path d="M378,42 Q370,37 367,42" fill="#8FA34E" stroke="none"/>
-                    <path d="M374,85 Q366,82 364,86" fill="#6B8A3A" stroke="none"/>
-
-                    <!-- Wispy stem right -->
-                    <path d="M540,140 Q548,100 535,68 Q528,48 538,15" stroke="#4D5B38" stroke-width="1.6"/>
-                    <path d="M535,68 Q527,64 524,68" fill="#8FA34E" stroke="none"/>
-                    <path d="M536,45 Q544,40 547,44" fill="#6B8A3A" stroke="none"/>
-
-                    <!-- Far right curve -->
-                    <path d="M660,140 Q655,98 665,65 Q672,42 662,12" stroke="#6B8A3A" stroke-width="1.8"/>
-                    <path d="M665,65 Q672,60 676,64" fill="#8FA34E" stroke="none"/>
-                    <path d="M667,42 Q659,38 656,42" fill="#8FA34E" stroke="none"/>
-                </g>
-
-                <!-- Daisies with proper petals -->
-                <g>
-                    <!-- Big daisy -->
-                    <ellipse cx="88" cy="20" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(-30 88 20)"/>
-                    <ellipse cx="96" cy="20" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(30 96 20)"/>
-                    <ellipse cx="92" cy="16" rx="4" ry="2" fill="#fff" opacity="0.9" transform="rotate(90 92 16)"/>
-                    <ellipse cx="88" cy="25" rx="3.5" ry="1.8" fill="#fff" opacity="0.85" transform="rotate(-60 88 25)"/>
-                    <ellipse cx="96" cy="25" rx="3.5" ry="1.8" fill="#fff" opacity="0.85" transform="rotate(60 96 25)"/>
-                    <circle cx="92" cy="21" r="3" fill="#E5983A"/>
-                    <circle cx="92" cy="21" r="1.5" fill="#F0B95A"/>
-
-                    <!-- Small tilted daisy -->
-                    <ellipse cx="535" cy="14" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(-20 535 14)"/>
-                    <ellipse cx="541" cy="14" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(25 541 14)"/>
-                    <ellipse cx="538" cy="11" rx="3" ry="1.5" fill="#fff" opacity="0.85" transform="rotate(80 538 11)"/>
-                    <ellipse cx="538" cy="18" rx="2.8" ry="1.4" fill="#fff" opacity="0.8"/>
-                    <circle cx="538" cy="14" r="2.5" fill="#E5983A"/>
-                    <circle cx="538" cy="14" r="1.2" fill="#F0B95A"/>
-                </g>
-
-                <!-- Marigolds with ruffled petals -->
-                <g>
-                    <circle cx="258" cy="19" r="6" fill="#E5983A" opacity="0.8"/>
-                    <circle cx="254" cy="16" r="3" fill="#F0B95A" opacity="0.7"/>
-                    <circle cx="262" cy="16" r="3" fill="#F0B95A" opacity="0.7"/>
-                    <circle cx="258" cy="23" r="3" fill="#E5983A" opacity="0.6"/>
-                    <circle cx="258" cy="19" r="2.5" fill="#F0B95A"/>
-
-                    <circle cx="662" cy="11" r="7" fill="#E5983A" opacity="0.75"/>
-                    <circle cx="657" cy="8" r="3.5" fill="#F0B95A" opacity="0.65"/>
-                    <circle cx="667" cy="8" r="3.5" fill="#F0B95A" opacity="0.65"/>
-                    <circle cx="662" cy="16" r="3.2" fill="#E5983A" opacity="0.55"/>
-                    <circle cx="662" cy="11" r="3" fill="#F0B95A"/>
-                </g>
-
-                <!-- Lavender sprigs with multiple buds -->
-                <g>
-                    <path d="M160,140 Q155,100 165,72 Q170,55 162,30" stroke="#6B8A3A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                    <circle cx="163" cy="30" r="2.2" fill="#9E90AB"/>
-                    <circle cx="165" cy="35" r="2" fill="#9E90AB" opacity="0.85"/>
-                    <circle cx="162" cy="40" r="1.8" fill="#9E90AB" opacity="0.7"/>
-                    <circle cx="164" cy="45" r="1.5" fill="#9E90AB" opacity="0.55"/>
-                    <circle cx="163" cy="50" r="1.2" fill="#9E90AB" opacity="0.4"/>
-
-                    <path d="M470,140 Q478,95 465,62 Q458,42 468,18" stroke="#6B8A3A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                    <circle cx="467" cy="18" r="2.2" fill="#9E90AB"/>
-                    <circle cx="465" cy="23" r="2" fill="#9E90AB" opacity="0.85"/>
-                    <circle cx="468" cy="28" r="1.8" fill="#9E90AB" opacity="0.7"/>
-                    <circle cx="466" cy="33" r="1.5" fill="#9E90AB" opacity="0.55"/>
-                    <circle cx="467" cy="38" r="1.2" fill="#9E90AB" opacity="0.4"/>
-
-                    <path d="M620,140 Q615,92 625,60 Q630,40 622,20" stroke="#4D5B38" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                    <circle cx="623" cy="20" r="2" fill="#B5A6C2"/>
-                    <circle cx="625" cy="25" r="1.8" fill="#9E90AB" opacity="0.8"/>
-                    <circle cx="622" cy="30" r="1.6" fill="#9E90AB" opacity="0.65"/>
-                    <circle cx="624" cy="35" r="1.3" fill="#9E90AB" opacity="0.5"/>
-                </g>
-
-                <!-- Purple cornflowers with spiky petals -->
-                <g>
-                    <path d="M372,10 l-4,-6 l3,5 l-6,-2 l5,2.5 l-5,3 l5.5,-2 l-3,5.5 l3.5,-4.5 l2,6 l0,-5.5 l4,5 l-2.5,-5 l6,2 l-5.5,-3 l5,-3.5 l-5.5,2.5 l3,-5.5z" fill="#9E90AB" opacity="0.85"/>
-                    <circle cx="372" cy="10" r="3" fill="#B5A6C2"/>
-                    <circle cx="372" cy="10" r="1.5" fill="#E0D9C6"/>
-
-                    <path d="M45,38 l-3,-5 l2.5,4 l-5,-1.5 l4,2 l-4,2.5 l4.5,-1.5 l-2.5,4.5 l3,-3.5 l1.5,5 l0,-4.5 l3,4 l-2,-4 l5,1.5 l-4.5,-2.5 l4,-3 l-4.5,2 l2.5,-4.5z" fill="#9E90AB" opacity="0.75"/>
-                    <circle cx="45" cy="38" r="2.5" fill="#B5A6C2"/>
-                    <circle cx="45" cy="38" r="1.2" fill="#E0D9C6"/>
-                    <path d="M45,140 Q42,100 48,70 Q50,55 45,38" stroke="#4D5B38" stroke-width="1.2" fill="none"/>
-                </g>
-
-                <!-- Butterfly -->
-                <g transform="translate(310,28) rotate(-12)">
-                    <path d="M0,0 Q-8,-10 -5,-18 Q-2,-10 0,-2" fill="#9E90AB" opacity="0.6"/>
-                    <path d="M0,0 Q8,-10 5,-18 Q2,-10 0,-2" fill="#E5983A" opacity="0.55"/>
-                    <path d="M0,0 Q-6,6 -4,12 Q-1,6 0,2" fill="#9E90AB" opacity="0.5"/>
-                    <path d="M0,0 Q6,6 4,12 Q1,6 0,2" fill="#E5983A" opacity="0.45"/>
-                    <line x1="0" y1="-2" x2="0" y2="4" stroke="#4D5B38" stroke-width="0.6"/>
-                    <circle cx="-1" cy="-3" r="0.5" fill="#4D5B38"/>
-                    <circle cx="1" cy="-3" r="0.5" fill="#4D5B38"/>
-                </g>
-
-                <!-- Dandelion puffs floating away -->
-                <g opacity="0.35">
-                    <circle cx="195" cy="18" r="1" fill="#E0D9C6"/>
-                    <line x1="195" y1="19" x2="195" y2="23" stroke="#E0D9C6" stroke-width="0.4"/>
-                    <line x1="195" y1="18" x2="193" y2="15" stroke="#E0D9C6" stroke-width="0.3"/>
-                    <line x1="195" y1="18" x2="197" y2="15" stroke="#E0D9C6" stroke-width="0.3"/>
-                    <line x1="195" y1="18" x2="195" y2="14.5" stroke="#E0D9C6" stroke-width="0.3"/>
-
-                    <circle cx="210" cy="10" r="0.8" fill="#E0D9C6"/>
-                    <line x1="210" y1="10.8" x2="210" y2="14" stroke="#E0D9C6" stroke-width="0.3"/>
-                    <line x1="210" y1="10" x2="208.5" y2="7.5" stroke="#E0D9C6" stroke-width="0.25"/>
-                    <line x1="210" y1="10" x2="211.5" y2="7.5" stroke="#E0D9C6" stroke-width="0.25"/>
-
-                    <circle cx="505" cy="12" r="0.8" fill="#E0D9C6"/>
-                    <line x1="505" y1="12.8" x2="505" y2="16" stroke="#E0D9C6" stroke-width="0.3"/>
-                    <line x1="505" y1="12" x2="503.5" y2="9.5" stroke="#E0D9C6" stroke-width="0.25"/>
-                    <line x1="505" y1="12" x2="506.5" y2="9.5" stroke="#E0D9C6" stroke-width="0.25"/>
-
-                    <circle cx="690" cy="22" r="1" fill="#E0D9C6"/>
-                    <line x1="690" y1="23" x2="690" y2="27" stroke="#E0D9C6" stroke-width="0.4"/>
-                    <line x1="690" y1="22" x2="688" y2="19" stroke="#E0D9C6" stroke-width="0.3"/>
-                    <line x1="690" y1="22" x2="692" y2="19" stroke="#E0D9C6" stroke-width="0.3"/>
-                </g>
-
-                <!-- Tiny scattered buds and berries -->
-                <g opacity="0.55">
-                    <circle cx="30" cy="62" r="2" fill="#E5983A"/>
-                    <circle cx="135" cy="55" r="1.5" fill="#9E90AB"/>
-                    <circle cx="200" cy="58" r="1.2" fill="#fff"/>
-                    <circle cx="290" cy="50" r="2" fill="#E5983A"/>
-                    <circle cx="340" cy="65" r="1.5" fill="#8FA34E"/>
-                    <circle cx="420" cy="52" r="1.8" fill="#9E90AB"/>
-                    <circle cx="510" cy="58" r="1.3" fill="#fff"/>
-                    <circle cx="580" cy="48" r="2" fill="#E5983A"/>
-                    <circle cx="650" cy="55" r="1.5" fill="#8FA34E"/>
-                    <circle cx="700" cy="50" r="1.8" fill="#9E90AB"/>
-                </g>
-
-                <!-- Curly vine tendrils -->
-                <g fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.35" stroke-linecap="round">
-                    <path d="M130,80 Q125,72 130,65 Q135,58 130,52"/>
-                    <path d="M400,90 Q395,82 400,75 Q405,68 400,62 Q395,56 400,50"/>
-                    <path d="M590,85 Q585,78 590,72 Q595,66 590,60"/>
-                </g>
-            </svg>
+            <img src="banner-footer.png" alt="" loading="lazy">
         </div>
     </main>
 
@@ -1265,6 +1148,20 @@
                     hotel3_addr: 'Voldersstraat 17',
                     hotel4_addr: 'Onderbergen 69 \u00b7 between both venues',
                     hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: 'Things to Do',
+                    todo_intro: 'Ghent is a beautiful city with plenty to explore. Here are a few highlights worth visiting while you\u2019re here.',
+                    todo1_desc: 'Stunning 18th-century palace with rococo interiors',
+                    todo2_name: 'Belfry of Ghent',
+                    todo2_desc: '91-metre tower with panoramic views of the city',
+                    todo3_desc: 'Medieval castle of the Counts of Flanders',
+                    todo4_name: 'St Bavo\u2019s Cathedral',
+                    todo4_desc: 'Home to the Ghent Altarpiece by the Van Eyck brothers',
+                    todo5_desc: 'Picturesque medieval waterfront along the Leie river',
+                    todo6_name: 'St Bavo\u2019s Abbey',
+                    todo6_desc: 'Ruins of a medieval abbey',
+                    todo_outro: 'Ghent is also a wonderful city to simply wander around, with charming streets and hidden corners waiting to be discovered.',
+                    citywalk_label: 'Try this city walk by Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/en/see-do/ghent-city-walk-quirky-charm',
                     gifts_title: 'Gifts',
                     gifts_text: 'Your presence means the world to us, especially if you\u2019re travelling from afar. We have no gift wishes, but if you\u2019d still like to give something, a contribution would be very much appreciated.',
                     coming_soon: 'More info coming soon',
@@ -1303,6 +1200,20 @@
                     hotel3_addr: 'Voldersstraat 17',
                     hotel4_addr: 'Onderbergen 69 \u00b7 tussen beide locaties',
                     hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: 'Bezienswaardigheden',
+                    todo_intro: 'Gent is een prachtige stad met heel wat te ontdekken. Hier zijn een paar hoogtepunten die zeker een bezoek waard zijn.',
+                    todo1_desc: 'Schitterend 18e-eeuws paleis met rococo-interieurs',
+                    todo2_name: 'Belfort van Gent',
+                    todo2_desc: 'Toren van 91 meter met panoramisch uitzicht over de stad',
+                    todo3_desc: 'Middeleeuws kasteel van de Graven van Vlaanderen',
+                    todo4_name: 'Sint-Baafskathedraal',
+                    todo4_desc: 'Thuisbasis van het Lam Gods van de gebroeders Van Eyck',
+                    todo5_desc: 'Pittoreske middeleeuwse waterkant langs de Leie',
+                    todo6_name: 'Sint-Baafsabdij',
+                    todo6_desc: 'Ru\u00efnes van een middeleeuwse abdij',
+                    todo_outro: 'Gent is ook een heerlijke stad om gewoon rond te wandelen, met sfeervolle straatjes en verborgen hoekjes die wachten om ontdekt te worden.',
+                    citywalk_label: 'Probeer deze stadswandeling van Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
                     gifts_title: 'Cadeaus',
                     gifts_text: 'Jullie aanwezigheid betekent al ontzettend veel, zeker als jullie van ver komen. We hebben geen wensen voor cadeaus, maar voor wie toch graag iets wil geven: een bijdrage wordt zeer gewaardeerd.',
                     coming_soon: 'Meer informatie volgt binnenkort',
@@ -1333,7 +1244,7 @@
                     parking3_hint: '\u0426\u0435\u043d\u0442\u0440 \u0433\u043e\u0440\u043e\u0434\u0430',
                     parking4_hint: '\u0423\u0434\u043e\u0431\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u0435\u0439',
                     dresscode_title: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434',
-                    dresscode_text: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434\u0430 \u043d\u0435\u0442. \u041c\u044b \u0445\u043e\u0442\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0432\u0441\u0435\u043c \u0431\u044b\u043b\u043e \u043a\u043e\u043c\u0444\u043e\u0440\u0442\u043d\u043e \u0438 \u0432\u0441\u0435 \u043d\u0430\u0441\u043b\u0430\u0436\u0434\u0430\u043b\u0438\u0441\u044c \u044d\u0442\u0438\u043c \u0434\u043d\u0451\u043c. \u0415\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043e\u0432\u043e\u0433\u043e \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u044f \u2014 \u0432\u043e\u0442 \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u0438\u043a\u0430:',
+                    dresscode_text: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434\u0430 \u043d\u0435\u0442. \u041c\u044b \u0445\u043e\u0442\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0432\u0441\u0435\u043c \u0431\u044b\u043b\u043e \u043a\u043e\u043c\u0444\u043e\u0440\u0442\u043d\u043e \u0438 \u0432\u0441\u0435 \u043d\u0430\u0441\u043b\u0430\u0436\u0434\u0430\u043b\u0438\u0441\u044c \u044d\u0442\u0438\u043c \u0434\u043d\u0451\u043c. \u0415\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043e\u0432\u043e\u0433\u043e \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u044f, \u0432\u043e\u0442 \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u0438\u043a\u0430:',
                     accom_title: '\u0413\u0434\u0435 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c\u0441\u044f',
                     accom_intro: '\u0418\u0449\u0435\u0442\u0435 \u0433\u0434\u0435 \u043e\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c\u0441\u044f? \u0412\u043e\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432 \u0440\u044f\u0434\u043e\u043c \u0441 \u043e\u0431\u043e\u0438\u043c\u0438 \u043c\u0435\u0441\u0442\u0430\u043c\u0438. \u0412 \u0413\u0435\u043d\u0442\u0435 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u0432\u044b\u0431\u043e\u0440, \u0442\u0430\u043a \u0447\u0442\u043e \u043c\u043e\u0436\u0435\u0442\u0435 \u0438 \u0441\u0430\u043c\u0438 \u043f\u043e\u0438\u0441\u043a\u0430\u0442\u044c.',
                     hotel1_addr: 'Limburgstraat 2 \u00b7 \u0440\u044f\u0434\u043e\u043c \u0441 \u0420\u0430\u0442\u0443\u0448\u0435\u0439',
@@ -1341,8 +1252,22 @@
                     hotel3_addr: 'Voldersstraat 17',
                     hotel4_addr: 'Onderbergen 69 \u00b7 \u043c\u0435\u0436\u0434\u0443 \u043e\u0431\u043e\u0438\u043c\u0438 \u043c\u0435\u0441\u0442\u0430\u043c\u0438',
                     hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: '\u0427\u0435\u043c \u0437\u0430\u043d\u044f\u0442\u044c\u0441\u044f',
+                    todo_intro: '\u0413\u0435\u043d\u0442 \u043f\u0440\u0435\u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0433\u043e\u0440\u043e\u0434, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u0435\u0441\u0442\u044c \u0447\u0442\u043e \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c. \u0412\u043e\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0441\u0442, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0441\u0442\u043e\u0438\u0442 \u043f\u043e\u0441\u0435\u0442\u0438\u0442\u044c.',
+                    todo1_desc: '\u0412\u0435\u043b\u0438\u043a\u043e\u043b\u0435\u043f\u043d\u044b\u0439 \u0434\u0432\u043e\u0440\u0435\u0446 XVIII \u0432\u0435\u043a\u0430 \u0432 \u0441\u0442\u0438\u043b\u0435 \u0440\u043e\u043a\u043e\u043a\u043e',
+                    todo2_name: '\u0411\u0435\u0444\u0444\u0440\u0443\u0430 (\u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f \u0413\u0435\u043d\u0442\u0430)',
+                    todo2_desc: '\u0411\u0430\u0448\u043d\u044f \u0432\u044b\u0441\u043e\u0442\u043e\u0439 91 \u043c\u0435\u0442\u0440 \u0441 \u043f\u0430\u043d\u043e\u0440\u0430\u043c\u043d\u044b\u043c \u0432\u0438\u0434\u043e\u043c \u043d\u0430 \u0433\u043e\u0440\u043e\u0434',
+                    todo3_desc: '\u0421\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u044b\u0439 \u0437\u0430\u043c\u043e\u043a \u0433\u0440\u0430\u0444\u043e\u0432 \u0424\u043b\u0430\u043d\u0434\u0440\u0438\u0438',
+                    todo4_name: '\u0421\u043e\u0431\u043e\u0440 \u0421\u0432\u044f\u0442\u043e\u0433\u043e \u0411\u0430\u0432\u043e\u043d\u0430',
+                    todo4_desc: '\u0417\u0434\u0435\u0441\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0413\u0435\u043d\u0442\u0441\u043a\u0438\u0439 \u0430\u043b\u0442\u0430\u0440\u044c \u0431\u0440\u0430\u0442\u044c\u0435\u0432 \u0412\u0430\u043d \u042d\u0439\u043a',
+                    todo5_desc: '\u0416\u0438\u0432\u043e\u043f\u0438\u0441\u043d\u0430\u044f \u0441\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u0430\u044f \u043d\u0430\u0431\u0435\u0440\u0435\u0436\u043d\u0430\u044f \u0432\u0434\u043e\u043b\u044c \u0440\u0435\u043a\u0438 \u041b\u0435\u0439\u0435',
+                    todo6_name: '\u0410\u0431\u0431\u0430\u0442\u0441\u0442\u0432\u043e \u0421\u0432\u044f\u0442\u043e\u0433\u043e \u0411\u0430\u0432\u043e\u043d\u0430',
+                    todo6_desc: '\u0420\u0443\u0438\u043d\u044b \u0441\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u043e\u0433\u043e \u0430\u0431\u0431\u0430\u0442\u0441\u0442\u0432\u0430',
+                    todo_outro: '\u0413\u0435\u043d\u0442 \u0442\u043e\u0436\u0435 \u043f\u0440\u0435\u043a\u0440\u0430\u0441\u0435\u043d \u0434\u043b\u044f \u043f\u0440\u043e\u0433\u0443\u043b\u043e\u043a, \u0437\u0430 \u043a\u0430\u0436\u0434\u044b\u043c \u043f\u043e\u0432\u043e\u0440\u043e\u0442\u043e\u043c \u0432\u0430\u0441 \u0436\u0434\u0443\u0442 \u0443\u044e\u0442\u043d\u044b\u0435 \u0443\u043b\u043e\u0447\u043a\u0438 \u0438 \u043d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f.',
+                    citywalk_label: '\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u044d\u0442\u043e\u0442 \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043e\u0442 Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
                     gifts_title: '\u041f\u043e\u0434\u0430\u0440\u043a\u0438',
-                    gifts_text: '\u0412\u0430\u0448\u0435 \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u0435 \u0437\u043d\u0430\u0447\u0438\u0442 \u0434\u043b\u044f \u043d\u0430\u0441 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e, \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e \u0435\u0441\u043b\u0438 \u0432\u044b \u043f\u0440\u0438\u0435\u0437\u0436\u0430\u0435\u0442\u0435 \u0438\u0437\u0434\u0430\u043b\u0435\u043a\u0430. \u0423 \u043d\u0430\u0441 \u043d\u0435\u0442 \u043f\u043e\u0436\u0435\u043b\u0430\u043d\u0438\u0439 \u043f\u043e \u043f\u043e\u0434\u0430\u0440\u043a\u0430\u043c, \u043d\u043e \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u0441\u0451 \u0436\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0434\u0430\u0440\u0438\u0442\u044c \u2014 \u043c\u044b \u0431\u0443\u0434\u0435\u043c \u043e\u0447\u0435\u043d\u044c \u0440\u0430\u0434\u044b.',
+                    gifts_text: '\u0412\u0430\u0448\u0435 \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u0435 \u0443\u0436\u0435 \u0437\u043d\u0430\u0447\u0438\u0442 \u0434\u043b\u044f \u043d\u0430\u0441 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e, \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e \u0442\u0430\u043a \u043a\u0430\u043a \u0432\u044b \u043f\u0440\u0438\u0435\u0437\u0436\u0430\u0435\u0442\u0435 \u0438\u0437\u0434\u0430\u043b\u0435\u043a\u0430. \u041d\u043e \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u0441\u0451 \u0442\u0430\u043a\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u043d\u0430\u043c \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0434\u0430\u0440\u0438\u0442\u044c, \u043b\u0443\u0447\u0448\u0438\u0439 \u043f\u043e\u0434\u0430\u0440\u043e\u043a \u0434\u043b\u044f \u043d\u0430\u0441 \u0432\u0430\u0448 \u0432\u043a\u043b\u0430\u0434 \u0432 \u043d\u0430\u0448\u0435 \u0431\u0443\u0434\u0443\u0449\u0435\u0435.',
                     coming_soon: '\u0421\u043a\u043e\u0440\u043e \u0431\u0443\u0434\u0435\u0442 \u0431\u043e\u043b\u044c\u0448\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438',
                     footer: '\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u043b\u044e\u0431\u043e\u0432\u044c\u044e'
                 }
@@ -1362,6 +1287,11 @@
                 if (rsvpLink) {
                     var url = translations[lang].rsvp_url || translations.en.rsvp_url;
                     rsvpLink.href = url;
+                }
+                /* Update city walk link */
+                var walkLink = document.getElementById('citywalk-link');
+                if (walkLink) {
+                    walkLink.href = translations[lang].citywalk_url || translations.en.citywalk_url;
                 }
                 document.documentElement.lang = lang;
                 var buttons = document.querySelectorAll('.lang-btn');
