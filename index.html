@@ -3,12 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Wedding celebration — Yuliya & Michael. More info coming soon.">
+    <meta name="description" content="Wedding celebration — RSVP for Yuliya & Michael's wedding. More info coming soon.">
     <meta name="theme-color" content="#8FA34E">
-    <meta property="og:title" content="Yuliya & Michael — Wedding Celebration">
-    <meta property="og:description" content="The website will be online soon!">
+    <meta property="og:title" content="Yuliya & Michael — Wedding Links">
+    <meta property="og:description" content="Join us for our special day! RSVP now — more info coming soon.">
     <meta property="og:type" content="website">
     <title>Yuliya &amp; Michael — Wedding Celebration</title>
+    <!-- Hey there, curious one. Yes, this is just a single HTML file. No, there is no hidden treasure map. Or is there? -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,25 +17,66 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
     <style>
+        /* ========================================
+           CSS Custom Properties (Design Tokens)
+           Palette from kleurenpalet.jpeg:
+             Lavender #9E90AB | Marigold #E5983A
+             Cream #E0D9C6   | Olive #8FA34E
+             Forest #4D5B38
+           ======================================== */
         :root {
+            /* Wildflower color palette */
             --color-bg-primary: #FBF8F0;
+            --color-bg-secondary: #F6F2E8;
             --color-accent: #8FA34E;
+            --color-accent-hover: #4D5B38;
             --color-text-primary: #3A3A2E;
             --color-text-muted: #7B7562;
             --color-surface: #FFFDF8;
-            --border-card: rgba(158, 144, 171, 0.12);
+            --color-cream: #E0D9C6;
+
+            /* Wildflower accent colors */
+            --color-wildflower-lavender: #9E90AB;
+            --color-wildflower-orange: #E5983A;
+            --color-wildflower-cream: #E0D9C6;
+            --color-wildflower-olive: #8FA34E;
+            --color-wildflower-forest: #4D5B38;
+
+            /* Shadows and borders */
+            --shadow-sm: 0 2px 8px rgba(77, 91, 56, 0.07);
             --shadow-md: 0 10px 30px rgba(77, 91, 56, 0.09);
+            --shadow-lg: 0 18px 40px rgba(77, 91, 56, 0.13);
+            --shadow-inset: inset 0 -6px 8px rgba(0, 0, 0, 0.06);
+            --border-subtle: rgba(143, 163, 78, 0.15);
+            --border-card: rgba(158, 144, 171, 0.12);
+
+            /* Spacing and sizing */
+            --max-width: 800px;
+            --radius-sm: 10px;
+            --radius-md: 12px;
             --radius-lg: 20px;
+            --gap-sm: 14px;
+            --gap-md: 20px;
+            --gap-lg: 28px;
+
+            /* Typography */
             --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
             --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-weight-normal: 400;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
         }
 
+        /* ========================================
+           Base Styles & Reset
+           ======================================== */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
         html {
             height: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -57,34 +99,28 @@
             -moz-osx-font-smoothing: grayscale;
             display: flex;
             justify-content: center;
-            align-items: center;
         }
 
+        /* ========================================
+           Card Container
+           ======================================== */
         .card {
             width: 100%;
-            max-width: 600px;
+            max-width: var(--max-width);
+            margin-top: 20px;
+            margin-bottom: 20px;
             background: rgba(255, 253, 248, 0.88);
             backdrop-filter: blur(12px);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-card);
             overflow: hidden;
-            text-align: center;
+            position: relative;
         }
 
-        h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin: 0 0 12px;
-            letter-spacing: 0.02em;
-        }
-
-        .card-content {
-            padding: 60px 40px 32px;
-        }
-
+        /* ========================================
+           Wildflower Banner Decoration (Bottom)
+           ======================================== */
         .meadow-bottom {
             width: 100%;
             overflow: hidden;
@@ -98,36 +134,1316 @@
             display: inline-block;
         }
 
-        .coming-soon {
-            font-size: clamp(1rem, 2.5vw, 1.15rem);
-            color: var(--color-text-muted);
-            margin: 0 0 6px;
-            font-weight: 600;
+        /* ========================================
+           Card Corner Flowers
+           ======================================== */
+        .card-corners {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .coming-soon-ru {
-            font-size: clamp(0.9rem, 2vw, 1rem);
+        .card-corners img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ========================================
+           Language Switcher
+           ======================================== */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 14px var(--gap-md) 0;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: var(--font-weight-semibold);
             color: var(--color-text-muted);
+            cursor: pointer;
+            transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .lang-btn.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #fff;
+        }
+
+        /* ========================================
+           Hero Section
+           ======================================== */
+        .hero {
+            padding: 72px var(--gap-lg) 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .ampersand {
+            display: inline-block;
+            color: var(--color-wildflower-orange);
+            font-style: italic;
+            padding: 0 4px;
+        }
+
+        h1 {
+            margin: 8px 0 8px;
+            font-family: var(--font-serif);
+            font-weight: var(--font-weight-bold);
+            font-size: clamp(26px, 5.5vw, 36px);
+            letter-spacing: 0.5px;
+            color: var(--color-wildflower-forest);
+            line-height: 1.2;
+        }
+
+        .date {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-wildflower-olive);
+            margin-bottom: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            margin: 6px 0 0;
+            line-height: 1.4;
+        }
+
+        /* Decorative wildflower sprig below subtitle */
+        .sprig {
+            display: block;
+            margin: 14px auto 0;
+            width: 80px;
+            height: 24px;
+        }
+
+        /* ========================================
+           Links Section
+           ======================================== */
+        .links {
+            padding: var(--gap-md) var(--gap-md) 36px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-sm);
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            gap: var(--gap-sm);
+            padding: 14px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 180ms cubic-bezier(0.4, 0, 0.2, 1),
+                        border-color 180ms ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover,
+        .link-btn:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent);
+        }
+
+        .link-btn:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        .link-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .link-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Each icon gets a unique wildflower color combination */
+        .flower-ico {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-inset);
+        }
+
+        .flower-ico--rsvp {
+            background: linear-gradient(135deg, var(--color-wildflower-olive), var(--color-wildflower-forest));
+            color: #fff;
+        }
+
+        .link-label {
+            font-weight: var(--font-weight-semibold);
+            font-size: 16px;
+            margin-bottom: 2px;
+            color: var(--color-text-primary);
+        }
+
+        .link-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        /* ========================================
+           Section Headers
+           ======================================== */
+        .section-header {
+            font-family: var(--font-serif);
+            font-weight: var(--font-weight-bold);
+            font-size: clamp(18px, 4vw, 22px);
+            color: var(--color-wildflower-forest);
+            text-align: center;
+            margin: 0 0 20px;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========================================
+           Locations Timeline
+           ======================================== */
+        .locations {
+            padding: 8px var(--gap-md) 28px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* Vertical connecting line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg,
+                var(--color-wildflower-olive) 0%,
+                var(--color-wildflower-lavender) 50%,
+                var(--color-wildflower-olive) 100%);
+            opacity: 0.35;
+            border-radius: 1px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 12px 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--gap-sm);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Timeline dot */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--color-wildflower-olive);
+            background: var(--color-surface);
+        }
+
+        .timeline-item--ceremony::before {
+            background: var(--color-wildflower-olive);
+        }
+
+        .timeline-item--walk::before {
+            background: var(--color-wildflower-lavender);
+            border-color: var(--color-wildflower-lavender);
+        }
+
+        .timeline-item--reception::before {
+            background: var(--color-wildflower-orange);
+            border-color: var(--color-wildflower-orange);
+        }
+
+        .timeline-item--dinner::before {
+            background: var(--color-wildflower-cream);
+            border-color: var(--color-wildflower-cream);
+        }
+
+        .timeline-item--party::before {
+            background: var(--color-wildflower-lavender);
+            border-color: var(--color-wildflower-lavender);
+        }
+
+        .timeline-time {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-wildflower-olive);
+            background: rgba(143, 163, 78, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+
+        .timeline-time-note {
+            font-weight: normal;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .timeline-time-note::before {
+            content: '· ';
+        }
+
+        .timeline-title {
+            font-weight: var(--font-weight-semibold);
+            font-size: 15px;
+            color: var(--color-text-primary);
+            margin-bottom: 3px;
+        }
+
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            text-decoration: none;
+            margin-top: 6px;
+            transition: color 150ms ease;
+        }
+
+        .timeline-link:hover,
+        .timeline-link:focus-visible {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        .timeline-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .timeline-link svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           Parking List (within Locations)
+           ======================================== */
+        .parking {
+            margin-top: 20px;
+        }
+
+        .parking-header {
+            font-family: var(--font-serif);
+            font-weight: var(--font-weight-semibold);
+            font-size: clamp(15px, 3.5vw, 18px);
+            color: var(--color-wildflower-forest);
+            margin: 0 0 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .parking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .parking-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .parking-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .parking-name {
+            font-weight: var(--font-weight-semibold);
+            font-size: 14px;
+            color: var(--color-text-primary);
+        }
+
+        .parking-hint {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        .parking-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            text-decoration: none;
+            margin-top: 4px;
+            transition: color 150ms ease;
+        }
+
+        .parking-link:hover,
+        .parking-link:focus-visible {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        .parking-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .parking-link svg {
+            width: 13px;
+            height: 13px;
+            flex-shrink: 0;
+        }
+
+        /* ========================================
+           Accommodation Section
+           ======================================== */
+        .accommodation {
+            padding: 8px var(--gap-md) 28px;
+        }
+
+        .accommodation-intro {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            text-align: justify;
+            margin: -12px 0 16px;
+            line-height: 1.4;
+        }
+
+        .hotel-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hotel-item {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--color-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hotel-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hotel-name {
+            font-weight: var(--font-weight-semibold);
+            font-size: 14px;
+            color: var(--color-text-primary);
+        }
+
+        .hotel-address {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.3;
+        }
+
+        .hotel-price {
+            flex-shrink: 0;
+            font-size: 14px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-wildflower-olive);
+            letter-spacing: -0.5px;
+        }
+
+        .hotel-price--dim {
+            opacity: 0.35;
+        }
+
+        /* ========================================
+           Dress Code Section
+           ======================================== */
+        .dresscode {
+            padding: 8px var(--gap-md) 20px;
+            text-align: center;
+        }
+
+        .dresscode-text {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.4;
+            margin: 0 0 12px;
+            text-align: justify;
+        }
+
+        .palette-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 150ms ease;
+        }
+
+        .palette-link:hover,
+        .palette-link:focus-visible {
+            color: var(--color-accent-hover);
+            text-decoration: underline;
+        }
+
+        .palette-link:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .palette-swatches {
+            display: inline-flex;
+            gap: 6px;
+        }
+
+        .palette-swatches span {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* ========================================
+           Divider between sections
+           ======================================== */
+        .section-divider {
+            display: block;
+            margin: 8px auto 0;
+            width: 60px;
+            height: 20px;
+        }
+
+        /* ========================================
+           Gifts Section
+           ======================================== */
+        .gifts {
+            padding: 8px var(--gap-md) 20px;
+            text-align: center;
+        }
+
+        .gifts-text {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
             margin: 0;
-            font-weight: 400;
+            text-align: justify;
+        }
+
+        .gifts-iban {
+            font-size: 14px;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin: 12px 0 0;
+        }
+
+        /* ========================================
+           Contact
+           ======================================== */
+        .contact {
+            padding: 8px var(--gap-md) 20px;
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .contact-numbers {
+            margin-top: 8px;
+            font-size: 14px;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        .contact-numbers a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .contact-numbers a:hover,
+        .contact-numbers a:focus-visible {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           Footer
+           ======================================== */
+        .footer {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            text-align: center;
+            padding: 18px var(--gap-md);
+            position: relative;
+        }
+
+        /* ========================================
+           Responsive Design
+           ======================================== */
+        @media (max-width: 520px) {
+            body {
+                padding: 20px 16px;
+            }
+
+            .hero {
+                padding: 58px 18px 20px;
+            }
+
+            .links {
+                padding: var(--gap-md) 16px 28px;
+            }
+
+            .locations {
+                padding: 8px 16px 24px;
+            }
+
+            .timeline {
+                padding-left: 24px;
+            }
+
+            .timeline-item {
+                padding: 10px 14px;
+            }
+
+            .timeline-item::before {
+                left: -20px;
+                width: 10px;
+                height: 10px;
+            }
+
+            .accommodation {
+                padding: 8px 16px 24px;
+            }
+
+            .gifts {
+                padding: 8px 16px 20px;
+            }
+
+            .hotel-item {
+                padding: 8px 12px;
+            }
+
+            .parking-item {
+                padding: 8px 12px;
+            }
+
+            .link-btn {
+                padding: 12px 14px;
+            }
+
+            .flower-ico {
+                width: 40px;
+                height: 40px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* ========================================
+           Print Styles
+           ======================================== */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            .meadow-bottom {
+                display: none;
+            }
+
+            .lang-switcher {
+                display: none;
+            }
+
+            .link-btn {
+                page-break-inside: avoid;
+            }
+
+            .link-btn::after {
+                content: " (" attr(href) ")";
+                font-size: 10px;
+                color: #666;
+            }
+
+            .timeline-link::after {
+                content: " (" attr(href) ")";
+                font-size: 10px;
+                color: #666;
+            }
+
+            .timeline-item {
+                page-break-inside: avoid;
+            }
+
+            .parking-link::after {
+                content: " (" attr(href) ")";
+                font-size: 10px;
+                color: #666;
+            }
+
+            .parking-item {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
 <body>
     <main class="card">
-        <div class="card-content">
-            <h1>Yuliya &amp; Michael</h1>
-            <p class="coming-soon">The website will be online soon!</p>
-            <p class="coming-soon-ru">Сайт скоро откроется!</p>
+        <div class="card-corners" aria-hidden="true">
+            <img src="corners.png" alt="" loading="eager">
         </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+            <button class="lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+        </div>
+
+        <header class="hero">
+            <h1><span data-i18n="name_1">Yuliya</span> <span class="ampersand">&amp;</span> <span data-i18n="name_2">Michael</span></h1>
+            <time class="date" datetime="2026-08-01" data-i18n="date">August 1, 2026</time>
+            <p class="subtitle" data-i18n="subtitle">Ghent, Belgium</p>
+
+            <svg class="sprig" viewBox="0 0 80 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M10,18 Q20,14 40,12 Q60,14 70,18" fill="none" stroke="#8FA34E" stroke-width="1" opacity="0.5"/>
+                <circle cx="25" cy="14" r="2.5" fill="#9E90AB" opacity="0.6"/>
+                <circle cx="40" cy="11" r="3" fill="#E5983A" opacity="0.5"/>
+                <circle cx="55" cy="14" r="2.5" fill="#9E90AB" opacity="0.6"/>
+                <circle cx="15" cy="16.5" r="1.5" fill="#8FA34E" opacity="0.5"/>
+                <circle cx="65" cy="16.5" r="1.5" fill="#8FA34E" opacity="0.5"/>
+            </svg>
+        </header>
+
+        <nav class="links" aria-label="Wedding information links">
+            <a class="link-btn" id="rsvp-link" href="https://forms.gle/AFgs9bL5xAzyTo7A8" target="_blank" rel="noopener noreferrer">
+                <div class="flower-ico flower-ico--rsvp" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="3" y="2" width="12" height="18" rx="2" fill="currentColor" opacity="0.3" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M7 7h4M7 10h4M7 13h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        <path d="M16 3l4.5 4.5L13 15h-2v-2L16 3z" fill="currentColor" opacity="0.9"/>
+                    </svg>
+                </div>
+                <div class="link-content">
+                    <div class="link-label" data-i18n="rsvp_label">RSVP</div>
+                    <div class="link-desc" data-i18n="rsvp_desc">Let us know if you can join us</div>
+                </div>
+            </a>
+        </nav>
+
+        <!-- Small decorative divider between sections -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="20" cy="11" r="1.8" fill="#9E90AB" opacity="0.5"/>
+            <circle cx="30" cy="9" r="2" fill="#E5983A" opacity="0.45"/>
+            <circle cx="40" cy="11" r="1.8" fill="#9E90AB" opacity="0.5"/>
+        </svg>
+
+        <section class="locations" aria-label="Day timeline and locations">
+            <h2 class="section-header" data-i18n="locations_title">The Day</h2>
+
+            <div class="timeline">
+                <article class="timeline-item timeline-item--ceremony">
+                    <div class="timeline-time"><span data-i18n="ceremony_time">10:40 AM</span> <span class="timeline-time-note" data-i18n="ceremony_arrive">arrive by 10:25</span></div>
+                    <div class="timeline-title" data-i18n="ceremony_title">Ceremony</div>
+                    <div class="timeline-desc" data-i18n="ceremony_desc">Ghent Town Hall, Botermarkt 1, 9000 Ghent</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/D2ouncZg4657bJLG6" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_map">View on map</span>
+                    </a>
+                </article>
+
+                <article class="timeline-item timeline-item--walk">
+                    <div class="timeline-time" data-i18n="walk_time">11:20 AM</div>
+                    <div class="timeline-title" data-i18n="walk_title">Boat Trip</div>
+                    <div class="timeline-desc" data-i18n="walk_desc">After the ceremony, we do a short 5–10 minute walk to Korenlei 4/A, followed by a 20-minute boat trip to the festivity location.</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/jUEFhJBpG7EBGGK38" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_boarding">View boarding point</span>
+                    </a>
+                </article>
+
+                <article class="timeline-item timeline-item--reception">
+                    <div class="timeline-time" data-i18n="reception_time">After boat trip</div>
+                    <div class="timeline-title" data-i18n="reception_title">Reception and games</div>
+                    <div class="timeline-desc" data-i18n="reception_desc">Saint Peter&rsquo;s Abbey, Ghent</div>
+                    <a class="timeline-link" href="https://maps.app.goo.gl/zT685j5PDxYs9V5X8" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                        <span data-i18n="view_map">View on map</span>
+                    </a>
+                </article>
+
+                <article class="timeline-item timeline-item--dinner">
+                    <div class="timeline-time" data-i18n="dinner_time">3:30 PM</div>
+                    <div class="timeline-title" data-i18n="dinner_title">Late afternoon plant based buffet</div>
+                </article>
+
+                <article class="timeline-item timeline-item--party">
+                    <div class="timeline-time" data-i18n="party_time">Evening</div>
+                    <div class="timeline-title" data-i18n="party_title">Party</div>
+                    <div class="timeline-desc" data-i18n="party_desc">Music, drinks, and board games to round off the evening together.</div>
+                </article>
+            </div>
+
+            <div class="parking">
+                <!-- Small decorative divider -->
+                <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+                    <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+                    <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+                    <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+                </svg>
+
+                <h3 class="section-header" data-i18n="parking_title">Parking</h3>
+                <div class="parking-list">
+                    <div class="parking-item">
+                        <div class="parking-info">
+                            <div class="parking-name">Parking Sint-Pietersplein</div>
+                            <div class="parking-hint" data-i18n="parking1_hint">Closest to festivity location</div>
+                            <a class="parking-link" href="https://maps.google.com/maps?q=Parking+Sint-Pietersplein+Gent" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                                <span data-i18n="view_map">View on map</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="parking-item">
+                        <div class="parking-info">
+                            <div class="parking-name">Parking Kouter</div>
+                            <div class="parking-hint" data-i18n="parking2_hint">City centre</div>
+                            <a class="parking-link" href="https://maps.google.com/maps?q=Parking+Kouter+Gent" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                                <span data-i18n="view_map">View on map</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="parking-item">
+                        <div class="parking-info">
+                            <div class="parking-name">Parking Sint-Michiels</div>
+                            <div class="parking-hint" data-i18n="parking3_hint">City centre</div>
+                            <a class="parking-link" href="https://maps.google.com/maps?q=Parking+Sint-Michiels+Gent" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                                <span data-i18n="view_map">View on map</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="parking-item">
+                        <div class="parking-info">
+                            <div class="parking-name">Interparking Gent Zuid</div>
+                            <div class="parking-hint" data-i18n="parking4_hint">Easy access from motorways</div>
+                            <a class="parking-link" href="https://maps.google.com/maps?q=Interparking+Gent+Zuid" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                                <span data-i18n="view_map">View on map</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
+        <section class="dresscode" aria-label="Dress code">
+            <h2 class="section-header" data-i18n="dresscode_title">What to Wear</h2>
+            <p class="dresscode-text" data-i18n="dresscode_text">There is no dress code. We want everyone to feel comfortable and enjoy the day. If you'd like some colour inspiration, here is the colour palette of the event:</p>
+            <div class="palette-swatches" aria-label="Event colour palette: lavender, marigold, cream, olive, forest green">
+                <span style="background:#9E90AB" title="Lavender"></span>
+                <span style="background:#E5983A" title="Marigold"></span>
+                <span style="background:#E0D9C6" title="Cream"></span>
+                <span style="background:#8FA34E" title="Olive"></span>
+                <span style="background:#4D5B38" title="Forest green"></span>
+            </div>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#E5983A" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#9E90AB" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#E5983A" opacity="0.45"/>
+        </svg>
+
+        <section class="accommodation" aria-label="Accommodation suggestions">
+            <h2 class="section-header" data-i18n="accom_title">Where to Stay</h2>
+            <p class="accommodation-intro" data-i18n="accom_intro">Looking for a place to stay? Here are a few suggestions near both venues. Ghent has plenty of different options, so let us know if we can help you navigate.</p>
+
+            <div class="hotel-list">
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">ibis Gent Centrum Kathedraal</div>
+                        <div class="hotel-address" data-i18n="hotel1_addr">Limburgstraat 2 &middot; next to Town Hall</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">ibis Gent Centrum Opera</div>
+                        <div class="hotel-address" data-i18n="hotel2_addr">Nederkouter 24</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">B&amp;B Hotel Gent Centrum</div>
+                        <div class="hotel-address" data-i18n="hotel3_addr">Voldersstraat 17</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Hotel Onderbergen</div>
+                        <div class="hotel-address" data-i18n="hotel4_addr">Onderbergen 69 &middot; between both venues</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;</span><span class="hotel-price--dim">&#8364;&#8364;</span></div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Parkhotel Gent</div>
+                        <div class="hotel-address" data-i18n="hotel5_addr">Nieuwebosstraat 1</div>
+                    </div>
+                    <div class="hotel-price"><span>&#8364;</span><span class="hotel-price--dim">&#8364;&#8364;</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
+        <section class="accommodation" aria-label="Things to do in Ghent">
+            <h2 class="section-header" data-i18n="todo_title">Things to Do</h2>
+            <p class="accommodation-intro" data-i18n="todo_intro">Ghent is a beautiful city with plenty to explore. Here are a few highlights worth visiting while you're here.</p>
+
+            <div class="hotel-list">
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Hotel d'Hane Steenhuyse</div>
+                        <div class="hotel-address" data-i18n="todo1_desc">Stunning 18th-century palace with rococo interiors</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo2_name">Belfry of Ghent</div>
+                        <div class="hotel-address" data-i18n="todo2_desc">91-metre tower with panoramic views of the city</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Gravensteen</div>
+                        <div class="hotel-address" data-i18n="todo3_desc">Medieval castle of the Counts of Flanders</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo4_name">St Bavo's Cathedral</div>
+                        <div class="hotel-address" data-i18n="todo4_desc">Home to the Ghent Altarpiece by the Van Eyck brothers</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">Graslei &amp; Korenlei</div>
+                        <div class="hotel-address" data-i18n="todo5_desc">Picturesque medieval waterfront along the Leie river</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name" data-i18n="todo6_name">St Bavo's Abbey</div>
+                        <div class="hotel-address" data-i18n="todo6_desc">Ruins of a medieval abbey</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name">STAM</div>
+                        <div class="hotel-address" data-i18n="todo7_desc">Ghent's city museum tracing the story of the city from medieval times to today</div>
+                    </div>
+                </div>
+            </div>
+            <p class="accommodation-intro" style="margin-top:14px;margin-bottom:0;text-align:left"><span data-i18n="todo_outro1">Ghent is also a wonderful city to simply wander around in, with charming streets and hidden corners waiting to be discovered.</span> <a class="timeline-link" id="citywalk-link" href="https://visit.gent.be/en/see-do/ghent-city-walk-quirky-charm" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:13px;height:13px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg> <span data-i18n="citywalk_label">Try this city walk by Visit Gent</span></a><br><br><span data-i18n="todo_outro2">We would also love to suggest things to do based on your interests, just let us know if we can help!</span></p>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
+        <section class="gifts" aria-label="Gifts">
+            <h2 class="section-header" data-i18n="gifts_title">Gifts</h2>
+            <p class="gifts-text" data-i18n="gifts_text">Your presence means the world to us, and many of you are travelling from afar. We have no specific gift wishes, but if you would still like to give something, a monetary gift would be very much appreciated.</p>
+            <p class="gifts-iban">BE30 9734 8064 2411</p>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
+        <section class="contact" aria-label="Contact">
+            <h2 class="section-header" data-i18n="contact_title">Contact</h2>
+            <p class="contact-text" data-i18n="contact_text">If you have any questions, urgent or not, feel free to contact us:</p>
+            <div class="contact-numbers">
+                <span data-i18n="name_2">Michael</span>: <a href="tel:+32470023165">+32 470 02 31 65</a><br>
+                <span data-i18n="name_1">Yuliya</span>: <a href="tel:+32493588605">+32 493 58 86 05</a>
+            </div>
+        </section>
+
+        <footer class="footer" data-i18n="footer">Made with love</footer>
 
         <div class="meadow-bottom" aria-hidden="true">
             <img src="banner-footer.png" alt="" loading="lazy">
         </div>
     </main>
+
+    <script>
+        (function () {
+            var translations = {
+                en: {
+                    date: 'August 1, 2026',
+                    name_1: 'Yuliya',
+                    name_2: 'Michael',
+                    subtitle: 'Ghent, Belgium',
+                    rsvp_label: 'RSVP',
+                    rsvp_desc: 'Let us know if you can join us',
+                    rsvp_url: 'https://forms.gle/a8nMq4QJJAjVZNYm7',
+                    locations_title: 'The Day',
+                    ceremony_time: '10:40 AM',
+                    ceremony_arrive: 'arrive by 10:25 AM',
+                    ceremony_title: 'Ceremony',
+                    ceremony_desc: 'Ghent Town Hall, Botermarkt 1, 9000 Ghent',
+                    walk_time: '11:20 AM',
+                    walk_title: 'Boat Trip',
+                    walk_desc: 'After the ceremony, we walk for 5\u201310 minutes to Korenlei 4/A, to take a boat to the festivity location.',
+                    reception_time: 'After boat trip',
+                    reception_title: 'Reception and games',
+                    reception_desc: 'Saint Peter\u2019s Abbey, Ghent',
+                    dinner_time: 'Around 4:00 PM',
+                    dinner_title: 'Late afternoon plant based buffet',
+                    party_time: 'Evening',
+                    party_title: 'Party',
+                    party_desc: 'Music, drinks, and board games to round off the evening together.',
+                    view_map: 'View on map',
+                    view_boarding: 'View boarding point',
+                    parking_title: 'Parking',
+                    parking1_hint: 'Closest to festivity location',
+                    parking2_hint: 'City centre',
+                    parking3_hint: 'City centre',
+                    parking4_hint: 'Easy access from motorways',
+                    dresscode_title: 'What to Wear',
+                    dresscode_text: 'There is no dress code. We want everyone to feel comfortable and enjoy the day. If you\u2019d like some colour inspiration, here is the colour palette of the event:',
+                    accom_title: 'Where to Stay',
+                    accom_intro: 'Looking for a place to stay? Here are a few suggestions near both venues. Ghent has plenty of different options, so let us know if we can help you navigate.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 next to Town Hall',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 between both venues',
+                    hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: 'Things to Do',
+                    todo_intro: 'Ghent is a beautiful city with plenty to explore. Here are a few highlights worth visiting while you\u2019re here.',
+                    todo1_desc: 'Stunning 18th-century palace with rococo interiors',
+                    todo2_name: 'Belfry of Ghent',
+                    todo2_desc: '91-metre tower with panoramic views of the city',
+                    todo3_desc: 'Medieval castle of the Counts of Flanders',
+                    todo4_name: 'St Bavo\u2019s Cathedral',
+                    todo4_desc: 'Home to the Ghent Altarpiece by the Van Eyck brothers',
+                    todo5_desc: 'Picturesque medieval waterfront along the Leie river',
+                    todo6_name: 'St Bavo\u2019s Abbey',
+                    todo6_desc: 'Ruins of a medieval abbey',
+                    todo7_desc: 'Ghent\u2019s city museum tracing the story of the city from medieval times to today',
+                    todo_outro1: 'Ghent is also a wonderful city to simply wander around in, with charming streets and hidden corners waiting to be discovered.',
+                    todo_outro2: 'We would also love to suggest things to do based on your interests, just let us know if we can help!',
+                    citywalk_label: 'Try this city walk by Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/en/see-do/ghent-city-walk-quirky-charm',
+                    gifts_title: 'Gifts',
+                    gifts_text: 'Your presence means the world to us, and many of you are travelling from afar. So gifts are definitely not required. However, if you would still like to gift something, we would appreciate a contribution towards our honeymoon.',
+                    footer: 'Made with love',
+                    contact_text: 'If you have any questions, urgent or not, feel free to contact us:',
+                    contact_title: 'Contact'
+                },
+                nl: {
+                    date: '1 augustus 2026',
+                    name_1: 'Yuliya',
+                    name_2: 'Michael',
+                    subtitle: 'Gent, België',
+                    rsvp_label: 'RSVP',
+                    rsvp_desc: 'Laat ons weten of je erbij kunt zijn',
+                    rsvp_url: 'https://forms.gle/WVnnyLPPKeDBVRSM7',
+                    locations_title: 'De Dag',
+                    ceremony_time: '10:40',
+                    ceremony_arrive: 'je wordt verwacht om 10:25',
+                    ceremony_title: 'Ceremonie',
+                    ceremony_desc: 'Stadhuis van Gent, Botermarkt 1, 9000 Gent',
+                    walk_time: '11:20',
+                    walk_title: 'Boottocht',
+                    walk_desc: 'Na de ceremonie maken we een korte wandeling van 5\u201310 minuten naar de Korenlei 4/A, gevolgd door een boottocht van 20 minuten naar de feestlocatie.',
+                    reception_time: 'Na de boottocht',
+                    reception_title: 'Receptie en spelletjes',
+                    reception_desc: 'Sint-Pietersabdij, Gent',
+                    dinner_time: 'Rond 16:00',
+                    dinner_title: 'Plantaardig buffet',
+                    party_time: 'Avond',
+                    party_title: 'Feest',
+                    party_desc: 'Muziek, drankjes en bordspellen om de avond samen af te sluiten.',
+                    view_map: 'Bekijk op kaart',
+                    view_boarding: 'Bekijk instapplaats',
+                    parking_title: 'Parkeren',
+                    parking1_hint: 'Dichtst bij de feestlocatie',
+                    parking2_hint: 'Centrum',
+                    parking3_hint: 'Centrum',
+                    parking4_hint: 'Vlotte toegang vanaf de snelweg',
+                    dresscode_title: 'Dresscode',
+                    dresscode_text: 'Er is geen dresscode. We willen dat iedereen zich op zijn gemak voelt en van de dag geniet. Wil je wat kleurinspiratie? Hier is het kleurenpalet van het feest:',
+                    accom_title: 'Overnachten',
+                    accom_intro: 'Op zoek naar een overnachting? Hier zijn een paar suggesties dicht bij beide locaties. Gent heeft veel verschillende opties, dus laat het ons weten als we kunnen helpen.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 naast het Stadhuis',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 tussen beide locaties',
+                    hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: 'Bezienswaardigheden',
+                    todo_intro: 'Gent is een prachtige stad met heel wat te ontdekken. Hier zijn een paar hoogtepunten die zeker een bezoek waard zijn.',
+                    todo1_desc: 'Schitterend 18e-eeuws paleis met rococo-interieurs',
+                    todo2_name: 'Belfort van Gent',
+                    todo2_desc: 'Toren van 91 meter met panoramisch uitzicht over de stad',
+                    todo3_desc: 'Middeleeuws kasteel van de Graven van Vlaanderen',
+                    todo4_name: 'Sint-Baafskathedraal',
+                    todo4_desc: 'Thuisbasis van het Lam Gods van de gebroeders Van Eyck',
+                    todo5_desc: 'Pittoreske middeleeuwse waterkant langs de Leie',
+                    todo6_name: 'Sint-Baafsabdij',
+                    todo6_desc: 'Ru\u00efnes van een middeleeuwse abdij',
+                    todo7_desc: 'Stadsmuseum dat het verhaal van Gent vertelt, van de middeleeuwen tot vandaag',
+                    todo_outro1: 'Gent is ook een prachtige stad om in rond te dwalen, met sfeervolle straatjes en verborgen hoekjes die wachten om ontdekt te worden.',
+                    todo_outro2: 'We helpen ook graag met tips afgestemd op jouw interesses, laat het ons weten als we kunnen helpen!',
+                    citywalk_label: 'Probeer deze stadswandeling van Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
+                    gifts_title: 'Cadeaus',
+                    gifts_text: 'Jullie aanwezigheid betekent al ontzettend veel, en velen van jullie komen van ver. Cadeaus zijn dus zeker niet nodig, maar voor wie toch graag iets wil geven: we zouden een bijdrage aan onze huwelijksreis heel erg waarderen.',
+                    footer: 'Gemaakt met liefde',
+                    contact_text: 'Heb je vragen, dringend of niet, neem gerust contact met ons op:',
+                    contact_title: 'Contact'
+                },
+                ru: {
+                    date: '1 \u0430\u0432\u0433\u0443\u0441\u0442\u0430 2026',
+                    name_1: '\u042e\u043b\u0438\u044f',
+                    name_2: '\u041c\u0438\u0445\u0430\u0438\u043b',
+                    subtitle: '\u0413\u0435\u043d\u0442, \u0411\u0435\u043b\u044c\u0433\u0438\u044f',
+                    rsvp_label: '\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0443\u0447\u0430\u0441\u0442\u0438\u0435',
+                    rsvp_desc: '\u0421\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043d\u0430\u043c, \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u043b\u0438 \u0432\u044b \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f',
+                    rsvp_url: 'https://forms.gle/Kjq3MxgpRhmBtciw5',
+                    locations_title: '\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0434\u043d\u044f',
+                    ceremony_time: '10:40',
+                    ceremony_arrive: 'прибудьте к 10:25',
+                    ceremony_title: 'Церемония',
+                    ceremony_desc: 'Ратуша Гента, Botermarkt 1, 9000 Gent',
+                    walk_time: '11:20',
+                    walk_title: '\u041f\u043e\u0435\u0437\u0434\u043a\u0430 \u043d\u0430 \u043b\u043e\u0434\u043a\u0435',
+                    walk_desc: '\u041f\u043e\u0441\u043b\u0435 \u0446\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u0438 \u043c\u044b \u043f\u0440\u043e\u0433\u0443\u043b\u044f\u0435\u043c\u0441\u044f \u0434\u043e Korenlei 4/A (5\u201310 \u043c\u0438\u043d\u0443\u0442), \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u0435\u0445\u0430\u0442\u044c \u043d\u0430 \u043b\u043e\u0434\u043a\u0435 \u0434\u043e \u043c\u0435\u0441\u0442\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u043e\u0432\u0430\u043d\u0438\u044f (20 \u043c\u0438\u043d\u0443\u0442).',
+                    reception_time: '\u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0435\u0437\u0434\u043a\u0438 \u043d\u0430 \u043b\u043e\u0434\u043a\u0435',
+                    reception_title: '\u041f\u0440\u0438\u0451\u043c \u0438 \u0438\u0433\u0440\u044b',
+                    reception_desc: 'Аббатство Святого Петра, Гент',
+                    dinner_time: '\u0412 \u0440\u0430\u0439\u043e\u043d\u0435 16:00',
+                    dinner_title: '\u0412\u0435\u0433\u0430\u043d\u0441\u043a\u0438\u0439 \u0431\u0443\u0444\u0435\u0442',
+                    party_time: 'Вечер',
+                    party_title: 'Вечеринка',
+                    party_desc: 'Музыка, напитки и настольные игры, чтобы завершить вечер вместе.',
+                    view_map: '\u041f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u043d\u0430 \u043a\u0430\u0440\u0442\u0435',
+                    view_boarding: '\u041c\u0435\u0441\u0442\u043e \u043f\u043e\u0441\u0430\u0434\u043a\u0438 \u043d\u0430 \u043b\u043e\u0434\u043a\u0443',
+                    parking_title: '\u041f\u0430\u0440\u043a\u043e\u0432\u043a\u0430',
+                    parking1_hint: '\u0411\u043b\u0438\u0436\u0435 \u0432\u0441\u0435\u0433\u043e \u043a \u043c\u0435\u0441\u0442\u0443 \u043f\u0440\u0430\u0437\u0434\u043d\u043e\u0432\u0430\u043d\u0438\u044f',
+                    parking2_hint: '\u0426\u0435\u043d\u0442\u0440 \u0433\u043e\u0440\u043e\u0434\u0430',
+                    parking3_hint: '\u0426\u0435\u043d\u0442\u0440 \u0433\u043e\u0440\u043e\u0434\u0430',
+                    parking4_hint: '\u0423\u0434\u043e\u0431\u043d\u044b\u0439 \u0434\u043e\u0441\u0442\u0443\u043f \u0441 \u0430\u0432\u0442\u043e\u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u0435\u0439',
+                    dresscode_title: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434',
+                    dresscode_text: '\u0414\u0440\u0435\u0441\u0441-\u043a\u043e\u0434\u0430 \u043d\u0435\u0442. \u041c\u044b \u0445\u043e\u0442\u0438\u043c, \u0447\u0442\u043e\u0431\u044b \u0432\u0441\u0435\u043c \u0431\u044b\u043b\u043e \u043a\u043e\u043c\u0444\u043e\u0440\u0442\u043d\u043e \u0438 \u0432\u0441\u0435 \u043d\u0430\u0441\u043b\u0430\u0436\u0434\u0430\u043b\u0438\u0441\u044c \u044d\u0442\u0438\u043c \u0434\u043d\u0451\u043c. \u0415\u0441\u043b\u0438 \u0445\u043e\u0442\u0438\u0442\u0435 \u043d\u0435\u043c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043e\u0432\u043e\u0433\u043e \u0432\u0434\u043e\u0445\u043d\u043e\u0432\u0435\u043d\u0438\u044f, \u0432\u043e\u0442 \u0446\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u043f\u0430\u043b\u0438\u0442\u0440\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u0438\u043a\u0430:',
+                    accom_title: '\u0413\u0434\u0435 \u043f\u0435\u0440\u0435\u043d\u043e\u0447\u0435\u0432\u0430\u0442\u044c',
+                    accom_intro: '\u0418\u0449\u0435\u0442\u0435 \u0433\u0434\u0435 \u043f\u0435\u0440\u0435\u043d\u043e\u0447\u0435\u0432\u0430\u0442\u044c? \u0412\u043e\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0433\u043e\u0441\u0442\u0438\u043d\u0438\u0446 \u043d\u0435\u0434\u0430\u043b\u0435\u043a\u043e \u043e\u0442 \u043c\u0435\u0441\u0442 \u043f\u0440\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u044f \u043f\u0440\u0430\u0437\u0434\u043d\u0438\u043a\u0430. \u0412 \u0413\u0435\u043d\u0442\u0435 \u0431\u043e\u043b\u044c\u0448\u043e\u0439 \u0432\u044b\u0431\u043e\u0440, \u0442\u0430\u043a \u0447\u0442\u043e \u043d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043d\u0430\u043c, \u0435\u0441\u043b\u0438 \u043d\u0443\u0436\u043d\u0430 \u043f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u043e\u0438\u0441\u043a\u043e\u043c.',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 \u0440\u044f\u0434\u043e\u043c \u0441 \u0420\u0430\u0442\u0443\u0448\u0435\u0439',
+                    hotel2_addr: 'Nederkouter 24',
+                    hotel3_addr: 'Voldersstraat 17',
+                    hotel4_addr: 'Onderbergen 69 \u00b7 \u043c\u0435\u0436\u0434\u0443 \u043e\u0431\u043e\u0438\u043c\u0438 \u043c\u0435\u0441\u0442\u0430\u043c\u0438',
+                    hotel5_addr: 'Nieuwebosstraat 1',
+                    todo_title: '\u0427\u0435\u043c \u0437\u0430\u043d\u044f\u0442\u044c\u0441\u044f',
+                    todo_intro: '\u0413\u0435\u043d\u0442 \u043f\u0440\u0435\u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0433\u043e\u0440\u043e\u0434, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u0435\u0441\u0442\u044c \u0447\u0442\u043e \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c. \u0412\u043e\u0442 \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043c\u0435\u0441\u0442, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0441\u0442\u043e\u0438\u0442 \u043f\u043e\u0441\u0435\u0442\u0438\u0442\u044c.',
+                    todo1_desc: '\u0412\u0435\u043b\u0438\u043a\u043e\u043b\u0435\u043f\u043d\u044b\u0439 \u0434\u0432\u043e\u0440\u0435\u0446 XVIII \u0432\u0435\u043a\u0430 \u0432 \u0441\u0442\u0438\u043b\u0435 \u0440\u043e\u043a\u043e\u043a\u043e',
+                    todo2_name: '\u0411\u0435\u0444\u0444\u0440\u0443\u0430 (\u041a\u043e\u043b\u043e\u043a\u043e\u043b\u044c\u043d\u044f \u0413\u0435\u043d\u0442\u0430)',
+                    todo2_desc: '\u0411\u0430\u0448\u043d\u044f \u0432\u044b\u0441\u043e\u0442\u043e\u0439 91 \u043c\u0435\u0442\u0440 \u0441 \u043f\u0430\u043d\u043e\u0440\u0430\u043c\u043d\u044b\u043c \u0432\u0438\u0434\u043e\u043c \u043d\u0430 \u0433\u043e\u0440\u043e\u0434',
+                    todo3_desc: '\u0421\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u044b\u0439 \u0437\u0430\u043c\u043e\u043a \u0433\u0440\u0430\u0444\u043e\u0432 \u0424\u043b\u0430\u043d\u0434\u0440\u0438\u0438',
+                    todo4_name: '\u0421\u043e\u0431\u043e\u0440 \u0421\u0432\u044f\u0442\u043e\u0433\u043e \u0411\u0430\u0432\u043e\u043d\u0430',
+                    todo4_desc: '\u0417\u0434\u0435\u0441\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0437\u043d\u0430\u043c\u0435\u043d\u0438\u0442\u043e\u0435 \u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0431\u0440\u0430\u0442\u044c\u0435\u0432 \u0412\u0430\u043d \u042d\u0439\u043a',
+                    todo5_desc: '\u0416\u0438\u0432\u043e\u043f\u0438\u0441\u043d\u0430\u044f \u0441\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u0430\u044f \u043d\u0430\u0431\u0435\u0440\u0435\u0436\u043d\u0430\u044f \u0432\u0434\u043e\u043b\u044c \u0440\u0435\u043a\u0438 \u041b\u0435\u0439\u0435',
+                    todo6_name: '\u0410\u0431\u0431\u0430\u0442\u0441\u0442\u0432\u043e \u0421\u0432\u044f\u0442\u043e\u0433\u043e \u0411\u0430\u0432\u043e\u043d\u0430',
+                    todo6_desc: '\u0420\u0443\u0438\u043d\u044b \u0441\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u043e\u0433\u043e \u0430\u0431\u0431\u0430\u0442\u0441\u0442\u0432\u0430',
+                    todo7_desc: '\u0413\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043c\u0443\u0437\u0435\u0439 \u0413\u0435\u043d\u0442\u0430, \u0440\u0430\u0441\u0441\u043a\u0430\u0437\u044b\u0432\u0430\u044e\u0449\u0438\u0439 \u0438\u0441\u0442\u043e\u0440\u0438\u044e \u0433\u043e\u0440\u043e\u0434\u0430 \u043e\u0442 \u0421\u0440\u0435\u0434\u043d\u0435\u0432\u0435\u043a\u043e\u0432\u044c\u044f \u0434\u043e \u043d\u0430\u0448\u0438\u0445 \u0434\u043d\u0435\u0439',
+                    todo_outro1: '\u0413\u0435\u043d\u0442 \u0442\u043e\u0436\u0435 \u043f\u0440\u0435\u043a\u0440\u0430\u0441\u0435\u043d \u0434\u043b\u044f \u043f\u0440\u043e\u0433\u0443\u043b\u043e\u043a, \u0437\u0430 \u043a\u0430\u0436\u0434\u044b\u043c \u043f\u043e\u0432\u043e\u0440\u043e\u0442\u043e\u043c \u0432\u0430\u0441 \u0436\u0434\u0443\u0442 \u0443\u044e\u0442\u043d\u044b\u0435 \u0443\u043b\u043e\u0447\u043a\u0438 \u0438 \u043d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u044f.',
+                    todo_outro2: '\u0415\u0441\u043b\u0438 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435, \u0441 \u0440\u0430\u0434\u043e\u0441\u0442\u044c\u044e \u043f\u043e\u0434\u0441\u043a\u0430\u0436\u0435\u043c, \u0447\u0442\u043e \u043f\u043e\u0441\u0435\u0442\u0438\u0442\u044c \u0438\u043c\u0435\u043d\u043d\u043e \u0432\u0430\u043c!',
+                    citywalk_label: '\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u044d\u0442\u043e\u0442 \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043e\u0442 Visit Gent',
+                    citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
+                    gifts_title: '\u041f\u043e\u0434\u0430\u0440\u043a\u0438',
+                    gifts_text: '\u0412\u0430\u0448\u0435 \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u0435 \u0443\u0436\u0435 \u0437\u043d\u0430\u0447\u0438\u0442 \u0434\u043b\u044f \u043d\u0430\u0441 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e, \u0438 \u043c\u043d\u043e\u0433\u0438\u0435 \u0438\u0437 \u0432\u0430\u0441 \u043f\u0440\u0438\u0435\u0437\u0436\u0430\u044e\u0442 \u0438\u0437\u0434\u0430\u043b\u0435\u043a\u0430. \u041f\u043e\u0434\u0430\u0440\u043a\u0438 \u0442\u043e\u0447\u043d\u043e \u043d\u0435 \u043d\u0443\u0436\u043d\u044b, \u043d\u043e \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u0441\u0451 \u0436\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0434\u0430\u0440\u0438\u0442\u044c, \u043c\u044b \u0431\u0443\u0434\u0435\u043c \u043e\u0447\u0435\u043d\u044c \u0431\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u043d\u044b \u0437\u0430 \u0432\u043a\u043b\u0430\u0434 \u0432 \u043d\u0430\u0448\u0435 \u0441\u0432\u0430\u0434\u0435\u0431\u043d\u043e\u0435 \u043f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435.',
+                    footer: '\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u043b\u044e\u0431\u043e\u0432\u044c\u044e',
+                    contact_text: '\u0415\u0441\u043b\u0438 \u0443 \u0432\u0430\u0441 \u0435\u0441\u0442\u044c \u0432\u043e\u043f\u0440\u043e\u0441\u044b, \u0441\u0440\u043e\u0447\u043d\u044b\u0435 \u0438\u043b\u0438 \u043d\u0435\u0442, \u0441\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u043d\u0430\u043c\u0438:',
+                    contact_title: '\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b'
+                }
+            };
+
+            function setLang(lang, updateURL) {
+                if (!translations[lang]) return;
+                var items = document.querySelectorAll('[data-i18n]');
+                for (var i = 0; i < items.length; i++) {
+                    var key = items[i].getAttribute('data-i18n');
+                    if (translations[lang][key]) {
+                        items[i].textContent = translations[lang][key];
+                    }
+                }
+                /* Update RSVP link — fall back to English URL if language-specific one is WIP */
+                var rsvpLink = document.getElementById('rsvp-link');
+                if (rsvpLink) {
+                    var url = translations[lang].rsvp_url || translations.en.rsvp_url;
+                    rsvpLink.href = url;
+                }
+                /* Update city walk link */
+                var walkLink = document.getElementById('citywalk-link');
+                if (walkLink) {
+                    walkLink.href = translations[lang].citywalk_url || translations.en.citywalk_url;
+                }
+                document.documentElement.lang = lang;
+                var buttons = document.querySelectorAll('.lang-btn');
+                for (var j = 0; j < buttons.length; j++) {
+                    buttons[j].classList.toggle('active', buttons[j].getAttribute('data-lang') === lang);
+                }
+                try { localStorage.setItem('lang', lang); } catch (e) {}
+                /* Update URL query parameter without reloading */
+                if (updateURL !== false) {
+                    var params = new URLSearchParams(window.location.search);
+                    params.set('lang', lang);
+                    var newURL = window.location.pathname + '?' + params.toString() + window.location.hash;
+                    history.replaceState(null, '', newURL);
+                }
+            }
+
+            var buttons = document.querySelectorAll('.lang-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function () {
+                    setLang(this.getAttribute('data-lang'));
+                });
+            }
+
+            /* Priority: URL ?lang= param > localStorage */
+            var urlParams = new URLSearchParams(window.location.search);
+            var urlLang = urlParams.get('lang');
+            var saved = null;
+            try { saved = localStorage.getItem('lang'); } catch (e) {}
+
+            if (urlLang && translations[urlLang]) {
+                setLang(urlLang, false);
+            } else if (saved && translations[saved]) {
+                setLang(saved);
+            } else {
+                setLang('en');
+            }
+        })();
+    </script>
 </body>
 </html>
