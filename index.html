@@ -443,6 +443,33 @@
             line-height: 1.4;
         }
 
+        /* Important note shown as an attention callout (e.g. seating info) */
+        .seats-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 10px;
+            padding: 10px 12px;
+            background: rgba(229, 152, 58, 0.13);
+            border: 1px solid rgba(229, 152, 58, 0.3);
+            border-left: 3px solid var(--color-wildflower-orange);
+            border-radius: var(--radius-sm);
+        }
+
+        .seats-note .timeline-desc {
+            margin-top: 0;
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .seats-note-ico {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            margin-top: 1px;
+            color: var(--color-wildflower-orange);
+        }
+
         .timeline-link {
             display: inline-flex;
             align-items: center;
@@ -925,7 +952,15 @@
                 <article class="timeline-item timeline-item--ceremony">
                     <div class="timeline-time"><span data-i18n="ceremony_time">10:40 AM</span> <span class="timeline-time-note" data-i18n="ceremony_arrive">arrive by 10:25</span></div>
                     <div class="timeline-title" data-i18n="ceremony_title">Ceremony</div>
-                    <div class="timeline-desc" data-i18n="ceremony_desc">Ghent Town Hall, Botermarkt 1, 9000 Ghent</div>
+                    <div class="timeline-desc" data-i18n="ceremony_desc">Ghent City Hall, Botermarkt 1, 9000 Ghent</div>
+                    <div class="seats-note">
+                        <svg class="seats-note-ico" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" fill="currentColor"/>
+                            <path d="M12 6.5v6.5" stroke="#fff" stroke-width="2.3" stroke-linecap="round"/>
+                            <circle cx="12" cy="17" r="1.45" fill="#fff"/>
+                        </svg>
+                        <div class="timeline-desc" data-i18n="ceremony_seats">There are 75 seats in the City Hall, so not everyone will be able to sit during the ceremony, which lasts no more than 20 minutes.</div>
+                    </div>
                     <a class="timeline-link" href="https://maps.app.goo.gl/D2ouncZg4657bJLG6" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
                         <span data-i18n="view_map">View on map</span>
@@ -1055,7 +1090,7 @@
                 <div class="hotel-item">
                     <div class="hotel-info">
                         <div class="hotel-name">ibis Gent Centrum Kathedraal</div>
-                        <div class="hotel-address" data-i18n="hotel1_addr">Limburgstraat 2 &middot; next to Town Hall</div>
+                        <div class="hotel-address" data-i18n="hotel1_addr">Limburgstraat 2 &middot; next to City Hall</div>
                     </div>
                     <div class="hotel-price"><span>&#8364;&#8364;</span><span class="hotel-price--dim">&#8364;</span></div>
                 </div>
@@ -1212,7 +1247,8 @@
                     ceremony_time: '10:40 AM',
                     ceremony_arrive: 'arrive by 10:25 AM',
                     ceremony_title: 'Ceremony',
-                    ceremony_desc: 'Ghent Town Hall, Botermarkt 1, 9000 Ghent',
+                    ceremony_desc: 'Ghent City Hall, Botermarkt 1, 9000 Ghent',
+                    ceremony_seats: 'There are 75 seats in the City Hall, so not everyone will be able to sit during the ceremony, which lasts no more than 20 minutes.',
                     walk_time: '11:20 AM',
                     walk_title: 'Boat Trip',
                     walk_desc: 'After the ceremony, we walk for 5\u201310 minutes to Korenlei 4/A, to take a boat to the festivity location.',
@@ -1235,7 +1271,7 @@
                     dresscode_text: 'There is no dress code. We want everyone to feel comfortable and enjoy the day. If you\u2019d like some colour inspiration, here is the colour palette of the event:',
                     accom_title: 'Where to Stay',
                     accom_intro: 'Looking for a place to stay? Here are a few suggestions near both venues. Ghent has plenty of different options, so let us know if we can help you navigate.',
-                    hotel1_addr: 'Limburgstraat 2 \u00b7 next to Town Hall',
+                    hotel1_addr: 'Limburgstraat 2 \u00b7 next to City Hall',
                     hotel2_addr: 'Nederkouter 24',
                     hotel3_addr: 'Voldersstraat 17',
                     hotel4_addr: 'Onderbergen 69 \u00b7 between both venues',
@@ -1275,6 +1311,7 @@
                     ceremony_arrive: 'je wordt verwacht om 10:25',
                     ceremony_title: 'Ceremonie',
                     ceremony_desc: 'Stadhuis van Gent, Botermarkt 1, 9000 Gent',
+                    ceremony_seats: 'Er zijn 75 zitplaatsen in het stadhuis dus niet iedereen zal kunnen zitten tijdens de ceremonie van maximum 20 minuten.',
                     walk_time: '11:20',
                     walk_title: 'Boottocht',
                     walk_desc: 'Na de ceremonie maken we een korte wandeling van 5\u201310 minuten naar de Korenlei 4/A, gevolgd door een boottocht van 20 minuten naar de feestlocatie.',
@@ -1337,6 +1374,7 @@
                     ceremony_arrive: 'прибудьте к 10:25',
                     ceremony_title: 'Церемония',
                     ceremony_desc: 'Ратуша Гента, Botermarkt 1, 9000 Gent',
+                    ceremony_seats: 'В ратуше 75 сидячих мест, поэтому сесть смогут не все во время церемонии, которая длится не более 20 минут.',
                     walk_time: '11:20',
                     walk_title: '\u041f\u043e\u0435\u0437\u0434\u043a\u0430 \u043d\u0430 \u043b\u043e\u0434\u043a\u0435',
                     walk_desc: '\u041f\u043e\u0441\u043b\u0435 \u0446\u0435\u0440\u0435\u043c\u043e\u043d\u0438\u0438 \u043c\u044b \u043f\u0440\u043e\u0433\u0443\u043b\u044f\u0435\u043c\u0441\u044f \u0434\u043e Korenlei 4/A (5\u201310 \u043c\u0438\u043d\u0443\u0442), \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u0435\u0445\u0430\u0442\u044c \u043d\u0430 \u043b\u043e\u0434\u043a\u0435 \u0434\u043e \u043c\u0435\u0441\u0442\u0430 \u043f\u0440\u0430\u0437\u0434\u043d\u043e\u0432\u0430\u043d\u0438\u044f (20 \u043c\u0438\u043d\u0443\u0442).',
