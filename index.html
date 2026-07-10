@@ -443,36 +443,6 @@
             line-height: 1.4;
         }
 
-        /* Buffet menu list within a timeline item */
-        .menu-list {
-            list-style: none;
-            margin: 8px 0 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-item {
-            position: relative;
-            padding-left: 18px;
-            font-size: 13px;
-            color: var(--color-text-muted);
-            line-height: 1.35;
-        }
-
-        /* Small wildflower marker before each dish */
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            left: 2px;
-            top: 0.5em;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--color-wildflower-orange);
-            opacity: 0.55;
-        }
         .seats-note {
             display: flex;
             align-items: flex-start;
@@ -1028,14 +998,6 @@
                 <article class="timeline-item timeline-item--dinner">
                     <div class="timeline-time" data-i18n="dinner_time">3:30 PM</div>
                     <div class="timeline-title" data-i18n="dinner_title">Late afternoon plant based buffet</div>
-                    <ul class="menu-list" aria-label="Buffet menu">
-                        <li class="menu-item" data-i18n="menu_1">Caesar salad with pulled oyster mushroom</li>
-                        <li class="menu-item" data-i18n="menu_2">Vol-au-vegan</li>
-                        <li class="menu-item" data-i18n="menu_3">Focaccia</li>
-                        <li class="menu-item" data-i18n="menu_4">Stuffed poblano peppers with tofu ricotta and beans</li>
-                        <li class="menu-item" data-i18n="menu_5">Pasta with beetroot pancetta</li>
-                        <li class="menu-item" data-i18n="menu_6">Mango salsa with lime</li>
-                    </ul>
                 </article>
 
                 <article class="timeline-item timeline-item--party">
@@ -1317,12 +1279,6 @@
                     reception_desc: 'Saint Peter\u2019s Abbey, Ghent',
                     dinner_time: 'Around 4:00 PM',
                     dinner_title: 'Late afternoon plant based buffet',
-                    menu_1: 'Caesar salad with pulled oyster mushroom',
-                    menu_2: 'Vol-au-vegan',
-                    menu_3: 'Focaccia',
-                    menu_4: 'Stuffed poblano peppers with tofu ricotta and beans',
-                    menu_5: 'Pasta with beetroot pancetta',
-                    menu_6: 'Mango salsa with lime',
                     party_time: 'Evening',
                     party_title: 'Party',
                     party_desc: 'Music, drinks, and board games to round off the evening together.',
@@ -1389,12 +1345,6 @@
                     reception_desc: 'Sint-Pietersabdij, Gent',
                     dinner_time: 'Rond 16:00',
                     dinner_title: 'Plantaardig buffet',
-                    menu_1: 'Caesar salad met pulled oyster mushroom',
-                    menu_2: 'Vol au vegan',
-                    menu_3: 'Focaccia',
-                    menu_4: 'Gevulde poblano pepers met tofu-ricotta en bonen',
-                    menu_5: 'Pasta met pancetta van rode biet',
-                    menu_6: 'Mango salsa met limoen',
                     party_time: 'Avond',
                     party_title: 'Feest',
                     party_desc: 'Muziek, drankjes en bordspellen om de avond samen af te sluiten.',
@@ -1461,12 +1411,6 @@
                     reception_desc: 'Аббатство Святого Петра, Гент',
                     dinner_time: '\u0412 \u0440\u0430\u0439\u043e\u043d\u0435 16:00',
                     dinner_title: '\u0412\u0435\u0433\u0430\u043d\u0441\u043a\u0438\u0439 \u0431\u0443\u0444\u0435\u0442',
-                    menu_1: '\u0421\u0430\u043b\u0430\u0442 \u00ab\u0426\u0435\u0437\u0430\u0440\u044c\u00bb \u0441 \u0442\u043e\u043c\u043b\u0451\u043d\u044b\u043c\u0438 \u0432\u0451\u0448\u0435\u043d\u043a\u0430\u043c\u0438',
-                    menu_2: '\u0412\u043e\u043b\u043e\u0432\u0430\u043d \u00ab\u0432\u043e\u043b-\u043e-\u0432\u0435\u0433\u0430\u043d\u00bb',
-                    menu_3: '\u0424\u043e\u043a\u0430\u0447\u0447\u0430',
-                    menu_4: '\u0424\u0430\u0440\u0448\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0446 \u043f\u043e\u0431\u043b\u0430\u043d\u043e \u0441 \u0442\u043e\u0444\u0443-\u0440\u0438\u043a\u043e\u0442\u0442\u043e\u0439 \u0438 \u0444\u0430\u0441\u043e\u043b\u044c\u044e',
-                    menu_5: '\u041f\u0430\u0441\u0442\u0430 \u0441\u043e \u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u043e\u0439 \u043f\u0430\u043d\u0447\u0435\u0442\u0442\u043e\u0439',
-                    menu_6: '\u0421\u0430\u043b\u044c\u0441\u0430 \u0438\u0437 \u043c\u0430\u043d\u0433\u043e \u0441 \u043b\u0430\u0439\u043c\u043e\u043c',
                     party_time: 'Вечер',
                     party_title: 'Вечеринка',
                     party_desc: 'Музыка, напитки и настольные игры, чтобы завершить вечер вместе.',
