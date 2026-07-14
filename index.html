@@ -631,6 +631,19 @@
             color: var(--color-text-primary);
         }
 
+        .hotel-name-link {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(158, 144, 171, 0.5);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .hotel-name-link:hover,
+        .hotel-name-link:focus-visible {
+            color: var(--color-accent);
+            border-color: currentColor;
+        }
+
         .hotel-address {
             font-size: 12px;
             color: var(--color-text-muted);
@@ -1224,6 +1237,64 @@
             <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
         </svg>
 
+        <section class="accommodation" aria-label="Where to eat in Ghent">
+            <h2 class="section-header" data-i18n="eat_title">Where to Eat</h2>
+            <p class="accommodation-intro" data-i18n="eat_intro">A few of our own favourite spots around town, from a quick bite to a sweet treat.</p>
+
+            <div class="hotel-list">
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/hXVdBYqJ4dYKFvMt5" target="_blank" rel="noopener noreferrer">Steamywindows</a></div>
+                        <div class="hotel-address" data-i18n="eat1_desc">A lovely Asian spot for freshly steamed dumplings</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/ErJdk8Y4iH6LKwXw9" target="_blank" rel="noopener noreferrer">Friterie Chasse Patat</a></div>
+                        <div class="hotel-address" data-i18n="eat2_desc">Our go-to chip shop for proper Belgian fries</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/inoC9mw2CvggqwjE7" target="_blank" rel="noopener noreferrer">Beiruti</a></div>
+                        <div class="hotel-address" data-i18n="eat3_desc">Warm Lebanese cooking and generous mezze</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/1rct1Pb4PFZusb4K8" target="_blank" rel="noopener noreferrer">Alard</a></div>
+                        <div class="hotel-address" data-i18n="eat4_desc">Homely Palestinian flavours worth seeking out</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/MzReWsnBPmCh9YCY9" target="_blank" rel="noopener noreferrer">Joost Arijs</a></div>
+                        <div class="hotel-address" data-i18n="eat5_desc">Yuliya&rsquo;s favourite chocolatier for exquisite pralines and pastries</div>
+                    </div>
+                </div>
+
+                <div class="hotel-item">
+                    <div class="hotel-info">
+                        <div class="hotel-name"><a class="hotel-name-link" href="https://maps.app.goo.gl/BFAmJih2KXqxmLqG6" target="_blank" rel="noopener noreferrer">Catberry</a></div>
+                        <div class="hotel-address" data-i18n="eat6_desc">The pastry chef&rsquo;s own café, if you enjoyed the desserts at our wedding</div>
+                    </div>
+                </div>
+            </div>
+            <p class="accommodation-intro" style="margin-top:14px;margin-bottom:0;text-align:left" data-i18n="eat_outro">Ghent is full of good food, so do explore beyond this list, and just ask us if you would like more suggestions!</p>
+        </section>
+
+        <!-- Small decorative divider -->
+        <svg class="section-divider" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5,14 Q15,10 30,9 Q45,10 55,14" fill="none" stroke="#8FA34E" stroke-width="0.8" opacity="0.4"/>
+            <circle cx="18" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+            <circle cx="30" cy="9" r="1.8" fill="#E5983A" opacity="0.5"/>
+            <circle cx="42" cy="11.5" r="1.5" fill="#9E90AB" opacity="0.45"/>
+        </svg>
+
         <section class="gifts" aria-label="Gifts">
             <h2 class="section-header" data-i18n="gifts_title">Gifts</h2>
             <p class="gifts-text" data-i18n="gifts_text">Your presence means the world to us, and many of you are travelling from afar. We have no specific gift wishes, but if you would still like to give something, a monetary gift would be very much appreciated.</p>
@@ -1317,6 +1388,15 @@
                     todo_outro2: 'We would also love to suggest things to do based on your interests, just let us know if we can help!',
                     citywalk_label: 'Try this city walk by Visit Gent',
                     citywalk_url: 'https://visit.gent.be/en/see-do/ghent-city-walk-quirky-charm',
+                    eat_title: 'Where to Eat',
+                    eat_intro: 'A few of our own favourite spots around town, from a quick bite to a sweet treat.',
+                    eat1_desc: 'A lovely spot for freshly steamed Asian dumplings',
+                    eat2_desc: 'Our favourite chip shop for proper Belgian fries',
+                    eat3_desc: 'Warm Lebanese cooking and generous mezze',
+                    eat4_desc: 'Homely Palestinian flavours worth seeking out',
+                    eat5_desc: 'Yuliya\u2019s favourite chocolatier for pralines and pastries',
+                    eat6_desc: 'The pastry chef\u2019s own caf\u00e9, if you enjoyed the plant based desserts at our wedding',
+                    eat_outro: 'Ghent is full of good food, so do explore beyond this list, and just ask us if you would like more suggestions!',
                     gifts_title: 'Gifts',
                     gifts_text: 'Your presence means the world to us, and many of you are travelling from afar. So gifts are definitely not required. However, if you would still like to gift something, we would appreciate a contribution towards our honeymoon.',
                     footer: 'Made with love',
@@ -1383,6 +1463,15 @@
                     todo_outro2: 'We helpen ook graag met tips afgestemd op jouw interesses, laat het ons weten als we kunnen helpen!',
                     citywalk_label: 'Probeer deze stadswandeling van Visit Gent',
                     citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
+                    eat_title: 'Waar te Eten',
+                    eat_intro: 'Een paar van onze eigen favoriete adresjes in de stad.',
+                    eat1_desc: 'Een zaak voor vers gestoomde Aziatische dumplings',
+                    eat2_desc: 'Onze favoriete frituur in Gent',
+                    eat3_desc: 'Warme Libanese keuken met royale mezze',
+                    eat4_desc: 'Lekkere Palestijnse gerechten met een huiselijke toets',
+                    eat5_desc: 'Yuliya\u2019s favoriete chocolatier voor verfijnde pralines en gebak',
+                    eat6_desc: 'Het eigen caf\u00e9 van de patissier, als je genoten hebt van de desserts op ons huwelijk',
+                    eat_outro: 'Gent zit vol geweldige eetplaatsen, dus ontdek zeker meer dan dit lijstje en vraag ons gerust om extra tips!',
                     gifts_title: 'Cadeaus',
                     gifts_text: 'Jullie aanwezigheid betekent al ontzettend veel, en velen van jullie komen van ver. Cadeaus zijn dus zeker niet nodig, maar voor wie toch graag iets wil geven: we zouden een bijdrage aan onze huwelijksreis heel erg waarderen.',
                     footer: 'Gemaakt met liefde',
@@ -1449,6 +1538,15 @@
                     todo_outro2: '\u0415\u0441\u043b\u0438 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435, \u0441 \u0440\u0430\u0434\u043e\u0441\u0442\u044c\u044e \u043f\u043e\u0434\u0441\u043a\u0430\u0436\u0435\u043c, \u0447\u0442\u043e \u043f\u043e\u0441\u0435\u0442\u0438\u0442\u044c \u0438\u043c\u0435\u043d\u043d\u043e \u0432\u0430\u043c!',
                     citywalk_label: '\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u044d\u0442\u043e\u0442 \u0433\u043e\u0440\u043e\u0434\u0441\u043a\u043e\u0439 \u043c\u0430\u0440\u0448\u0440\u0443\u0442 \u043e\u0442 Visit Gent',
                     citywalk_url: 'https://visit.gent.be/nl/zien-doen/stadswandeling-gent-charmant-anders',
+                    eat_title: 'Где поесть',
+                    eat_intro: 'Несколько наших любимых мест в городе, от быстрого перекуса до сладкого угощения.',
+                    eat1_desc: 'Уютное азиатское место со свежими паровыми дамплингами',
+                    eat2_desc: 'Наша любимая фритюрная в Генте',
+                    eat3_desc: 'Тёплая ливанская кухня и щедрое мезе',
+                    eat4_desc: 'Домашние палестинские вкусы, которые стоит попробовать',
+                    eat5_desc: 'Любимый шоколатье Юлии с изысканными пралине и десертами',
+                    eat6_desc: 'Кафе самого кондитера, загляните, если вам понравились десерты на нашей свадьбе',
+                    eat_outro: 'В Генте много вкусной еды, так что не ограничивайтесь этим списком, и обращайтесь к нам, если хотите больше рекомендаций!',
                     gifts_title: '\u041f\u043e\u0434\u0430\u0440\u043a\u0438',
                     gifts_text: '\u0412\u0430\u0448\u0435 \u043f\u0440\u0438\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u0435 \u0443\u0436\u0435 \u0437\u043d\u0430\u0447\u0438\u0442 \u0434\u043b\u044f \u043d\u0430\u0441 \u043e\u0447\u0435\u043d\u044c \u043c\u043d\u043e\u0433\u043e, \u0438 \u043c\u043d\u043e\u0433\u0438\u0435 \u0438\u0437 \u0432\u0430\u0441 \u043f\u0440\u0438\u0435\u0437\u0436\u0430\u044e\u0442 \u0438\u0437\u0434\u0430\u043b\u0435\u043a\u0430. \u041f\u043e\u0434\u0430\u0440\u043a\u0438 \u0442\u043e\u0447\u043d\u043e \u043d\u0435 \u043d\u0443\u0436\u043d\u044b, \u043d\u043e \u0435\u0441\u043b\u0438 \u0432\u044b \u0432\u0441\u0451 \u0436\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0434\u0430\u0440\u0438\u0442\u044c, \u043c\u044b \u0431\u0443\u0434\u0435\u043c \u043e\u0447\u0435\u043d\u044c \u0431\u043b\u0430\u0433\u043e\u0434\u0430\u0440\u043d\u044b \u0437\u0430 \u0432\u043a\u043b\u0430\u0434 \u0432 \u043d\u0430\u0448\u0435 \u0441\u0432\u0430\u0434\u0435\u0431\u043d\u043e\u0435 \u043f\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u0435.',
                     footer: '\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441 \u043b\u044e\u0431\u043e\u0432\u044c\u044e',
